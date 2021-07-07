@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 const axios = require('axios');
 const userDto = require('../Users/dto');
 const controllerProfiles = require('../Profiles/controller');
-const controllerCards = require('../Cards/controller');
 
 // Models.
 const User = require('../Users/user');
