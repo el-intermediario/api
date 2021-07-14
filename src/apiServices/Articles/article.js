@@ -8,44 +8,24 @@ const articleSchema = new Schema({
         type: mongoose.Schema.Type.ObjectId,
         ref: 'User'
     },
-    firstName: {
+    title: {
         type: String,
         default: null
     }, 
-    lastName: {
+    body: {
         type: String,
         default: null
     },
-    phone: {
+    date: {
         type: Number, 
         default: null
-    },
-    phoneArea: {
-        type: Number, 
-        default: null
-    },
-    typeId: {
-        type: String,
-        default: null
-    },
-    numberId: {
-        type: Number,
-        default: null
-    },
-    gender: {
-        type: String, 
-        default: null 
     }, 
-    birthday: {
-        type: String,
-        default: null
-    }, 
-    imagen: {
+    image: {
         type: String,
         default: null
     },
     status: {
-        type: String,
+        type: Boolean,
         default: null
     }
 })
