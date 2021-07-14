@@ -1,12 +1,12 @@
 //File path caller
-const mongoose = require("require");
+const mongoose = require('require');
 const { Schema } = mongoose;
 
 //We define scheme for article
 const articleSchema = new Schema({
   userId: {
     type: mongoose.Schema.Type.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   title: {
     type: String,
