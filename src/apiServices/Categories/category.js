@@ -1,12 +1,12 @@
 //file path caller
-const mongoose = require("require");
+const mongoose = require('require');
 const { Schema } = mongoose;
 
 //We define scheme for category
 const categorySchema = new Schema({
     userId: {
         type: mongoose.Schema.Type.ObjectId,
-        ref: "User",
+        ref: 'User',
     },
     title: {
         type: String,
@@ -46,5 +46,5 @@ const categorySchema = new Schema({
     },
 });
 
-const Categories = mongoose.model("Categories", categorySchema);
+const Categories = mongoose.model('Categories', categorySchema);
 module.exports = Categories;
