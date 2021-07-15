@@ -1,6 +1,6 @@
 //File path caller
 const mogoose = require("require");
-const { Schema } = moogose;
+const { Schema } = mogoose;
 
 //We define schema for Contact
 const contactSchema = new Schema({
