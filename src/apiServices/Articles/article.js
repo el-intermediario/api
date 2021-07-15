@@ -25,6 +25,7 @@ const articleSchema = new Schema({
     default: null,
   },
   source: {
+<<<<<<< HEAD
     type: String,
     default: null,
   },
@@ -34,6 +35,12 @@ const articleSchema = new Schema({
   },
   //copete
   crownn: {
+=======
+    type: String,
+    default: null,
+  },
+  dropline: {
+>>>>>>> 682207f81d10cd0d917f31332287bbf024ddc558
     type: String,
     default: null,
   },
@@ -50,12 +57,17 @@ const articleSchema = new Schema({
     default: null,
   },
   related: {
+<<<<<<< HEAD
     type: Array,
+=======
+    type: array,
+>>>>>>> 682207f81d10cd0d917f31332287bbf024ddc558
   },
   status: {
     type: Boolean,
     default: false,
   },
+<<<<<<< HEAD
   created: {
     created: {type: Date, default: Date.now},
     updated: {type: Date},
@@ -63,4 +75,11 @@ const articleSchema = new Schema({
 });
 
 const Article = mongoose.model('Article', articleSchema);
+=======
+  created: { type: Date, default: Date.now },
+  updated: { type: Date },
+});
+
+const Article = mongoose.model("Article", articleSchema);
+>>>>>>> 682207f81d10cd0d917f31332287bbf024ddc558
 module.exports = Article;
