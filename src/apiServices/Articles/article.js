@@ -8,6 +8,10 @@ const articleSchema = new Schema({
     type: mongoose.Schema.Type.ObjectId,
     ref: 'User',
   },
+  categoryId: {
+    type: mongoose.Schema.Type.ObjectId,
+    ref: 'Category',
+  },
   title: {
     type: String,
     default: null,
@@ -20,11 +24,11 @@ const articleSchema = new Schema({
     type: Number,
     default: null,
   },
-  fountain: {
+  source: {
     type: String,
     default: null,
   },
-  flywheel: {
+  dropline: {
     type: String,
     default: null,
   },
@@ -32,11 +36,16 @@ const articleSchema = new Schema({
     type: String,
     default: null,
   },
+  related: {
+    type: array,
+  },
   status: {
     type: Boolean,
-    default: null,
+    default: false,
   },
+  created: { type: Date, default: Date.now },
+  updated: { type: Date },
 });
 
-const Articles = mongoose.model("Articles", articleSchema);
-module.exports = Articles;
+const Article = mongoose.model("Article", articleSchema);
+module.exports = Article;
