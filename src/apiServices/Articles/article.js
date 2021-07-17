@@ -32,12 +32,7 @@ const articleSchema = new Schema({
     type: String,
     default: null,
   },
-  //copete
-  crownn: {
-    type: String,
-    default: null,
-  },
-  dropline: {
+  copete: {
     type: String,
     default: null,
   },
@@ -61,10 +56,8 @@ const articleSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  created: {
-    created: {type: Date, default: Date.now},
-    updated: {type: Date},
-  }
+  created: {type: Date, default: Date.now},
+  updated: {type: Date, default: Date.now},
 });
 
 const Article = mongoose.model("Article", articleSchema);
