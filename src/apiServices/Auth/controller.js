@@ -2,11 +2,9 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 const axios = require('axios');
 const userDto = require('../Users/dto');
-const controllerProfiles = require('../Profiles/controller');
 
 // Models.
 const User = require('../Users/user');
-const Profile = require('../Profiles/profile');
 
 async function login(req, res, next) {
   const { email, password } = req.body;
@@ -19,8 +17,6 @@ async function login(req, res, next) {
   if (bcrypt.compareSync(password, user.password)) {
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET);
     let userData = await userDto.single(user);
-    // userData.cards = await controllerCards.getCardsByUserId(userData.id);
-    userData.profile = await controllerProfiles.getProfileByUserId(userData.id);
     userData.headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
@@ -34,7 +30,7 @@ async function login(req, res, next) {
 }
 
 async function register(req, res) {
-  const { firstName, lastName, dni, email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
   // Check if user exist.
   const checkUser = await User.findOne({
     email
@@ -47,22 +43,15 @@ async function register(req, res) {
   try {
     const user = await new User({
       email,
-      password
-    }).save();
-
-    const profile = await new Profile({
-      userId: user._id,
+      password,
       firstName,
       lastName,
-      dni
     }).save();
 
     // Response for login.
     const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET);
     let userData = { ...user._doc };
     delete userData['password'];
-    userData.cards = await Card.find({ userId: user._id });
-    userData.profile = profile;
     userData.headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
