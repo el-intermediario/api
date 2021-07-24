@@ -1,28 +1,32 @@
-//File path caller
-const mongoose = require('require');
-const { Schema } = mongoose;
+const mongoose = require('mongoose');
+const slug = require('mongoose-slug-generator');
+mongoose.plugin(slug);
 
 //We define scheme for article
-const articleSchema = new Schema({
+const articleSchema = new mongoose.Schema({
+  /*
   userId: {
     type: mongoose.Schema.Type.ObjectId,
     ref: 'User',
-  },
+  },*/
+  /*
   categoryId: {
     type: mongoose.Schema.Type.ObjectId,
     ref: 'Category',
-  },
+  },*/
   title: {
     type: String,
     default: null,
+    required: true
   },
   body: {
     type: String,
     default: null,
+    required: true
   },
   date: {
     type: Number,
-    default: null,
+    default: Date.now,
   },
   source: {
     type: String,
@@ -40,25 +44,24 @@ const articleSchema = new Schema({
     type: String, 
     default: null,
   },
-  slug: {
-    type: String, 
-    default: null, 
-  },
   image: {
     type: String,
     default: null,
   },
   related: {
     type: Array,
-    type: array,
   },
   status: {
     type: Boolean,
     default: false,
   },
+  slug: { 
+    type: String, 
+    slug: "title" 
+  },
   created: {type: Date, default: Date.now},
   updated: {type: Date, default: Date.now},
 });
 
-const Article = mongoose.model("Article", articleSchema);
-module.exports = Article;
+const model = mongoose.model("Article", articleSchema);
+module.exports = model;

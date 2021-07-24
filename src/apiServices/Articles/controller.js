@@ -1,7 +1,9 @@
-const admin = require('firebase-admin');
+//const admin = require('firebase-admin');
 //const serviceAccount = require("../../../serviceAccountKey.json");
 const redis = require("redis");
 const clientRedis = redis.createClient({ host: 'redis' });
+const dto = require('./dto');
+const action = require('./actions');
 
 /*
 admin.initializeApp({
@@ -10,6 +12,12 @@ admin.initializeApp({
 */
 
 //const db = admin.firestore();
+
+// @TODO: Update with actions, dto and dao.
+async function post(req, res) {
+  const article = await action.post(req.body);
+  return res.send(dto.single(article));
+};
 
 async function getArticles(req, res) {
   const articles = await clientRedis.get('articles', async (err, data) => {
@@ -33,5 +41,6 @@ async function getArticles(req, res) {
 }
 
 module.exports = {
+  post,
   getArticles
 }
