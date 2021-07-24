@@ -4,6 +4,9 @@ module.exports = {
   async post(article) {
     return dao.post(article);
   },
+  async get(path) {
+    return dao.get(path);
+  },
   /*  
   async getProfile(id) {
       return dao.getProfile(id);

@@ -19,6 +19,11 @@ async function post(req, res) {
   return res.send(dto.single(article));
 };
 
+async function get(req, res) {
+  const article = await action.get(req.params.path);
+  return res.send(dto.single(article));
+};
+
 async function getArticles(req, res) {
   const articles = await clientRedis.get('articles', async (err, data) => {
     if (err) throw err;
@@ -41,6 +46,7 @@ async function getArticles(req, res) {
 }
 
 module.exports = {
+  get,
   post,
   getArticles
 }

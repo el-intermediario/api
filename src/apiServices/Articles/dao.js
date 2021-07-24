@@ -1,16 +1,15 @@
 const Article = require('./article');
 
 module.exports = {
-  /*
-  async getProfile(id) {
-    return new Promise((resolve, reject) => collection.findOne({ userId: id }, (err, docs) => {
+  async post(article) {
+    return new Promise((resolve, reject) => Article.create(article, (err, docs) => {
       if (err) return reject(err);
       return resolve(docs);
     }));
-  },*/
+  },
 
-  async post(article) {
-    return new Promise((resolve, reject) => Article.create(article, (err, docs) => {
+  async get(path) {
+    return new Promise((resolve, reject) => Article.findOne({ slug: path }, (err, docs) => {
       if (err) return reject(err);
       return resolve(docs);
     }));
