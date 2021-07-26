@@ -1,4 +1,3 @@
-const { get } = require('../Articles/dao');
 const dao = require('../dao');
 
 module.export = { 
