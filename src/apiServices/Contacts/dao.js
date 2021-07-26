@@ -1,4 +1,4 @@
-const Contact = require('../contact.js');
+const Contact = require('contact.js');
 
 module.exports = { 
     async post(Contact) { 
