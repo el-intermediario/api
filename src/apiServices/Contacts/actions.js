@@ -1,5 +1,4 @@
-const { post, get } = require('../Contacts/dao');
-const dao = require('../Contacts/dao');
+const dao = require('./dao');
 
 module.exports = {
     async post(Contact) {
