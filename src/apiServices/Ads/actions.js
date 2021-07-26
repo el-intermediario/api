@@ -1,6 +1,6 @@
 const dao = require('../dao');
 
-module.export = { 
+module.exports = { 
     async post(ad) { 
         return dao.post(ad);
     },
