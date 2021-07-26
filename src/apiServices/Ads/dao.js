@@ -1,16 +1,15 @@
-const Ads = require('ad.js');
-const { post, get } = require('../Articles/dao');
+const Ad = require('ad.js');
 
 module.exports = {
     async post(ad) {
-        return new Promise((resolve, reject) => ad.create(ad, (err, docs) => {
+        return new Promise((resolve, reject) => Ad.create(ad, (err, docs) => {
             if (err) return reject(err);
             return resolve(docs);
         }));
     },
 
     async get(path) {
-        return new Promise((resolve, reject) => ad.filOne({slug: path}, (err, docs) => {
+        return new Promise((resolve, reject) => Ad.filOne({slug: path}, (err, docs) => {
             if (err) return reject(err);
             return resolve(docs); 
         }));
