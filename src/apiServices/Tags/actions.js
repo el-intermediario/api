@@ -1,8 +1,8 @@
 const dao = require('./dao');
 
 module.exports = { 
-    async post(Tag) {
-        return dao.post(Tag);
+    async post(tag) {
+        return dao.post(tag);
     },
     async get(path) {
         return dao.get(path);

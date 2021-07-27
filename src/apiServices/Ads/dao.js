@@ -1,4 +1,4 @@
-const Ad = require('ad.js');
+const Ad = require('./ad');
 
 module.exports = {
     async post(ad) {
@@ -9,7 +9,7 @@ module.exports = {
     },
 
     async get(path) {
-        return new Promise((resolve, reject) => Ad.filOne({slug: path}, (err, docs) => {
+        return new Promise((resolve, reject) => Ad.findOne({slug: path}, (err, docs) => {
             if (err) return reject(err);
             return resolve(docs); 
         }));
