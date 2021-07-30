@@ -15,6 +15,14 @@ module.exports = {
     }));
   },
 
+  async getArticles(page, limit) {
+    return new Promise((resolve, reject) => Article.find({})
+    .skip(page * limit).limit(limit).exec((err, docs) => {
+        if (err) return reject(err);
+        return resolve(docs);
+      }));
+  },
+
   /*
   async updateProfile(id, { email, username }) {
     const update = { $set: { email, username } };
