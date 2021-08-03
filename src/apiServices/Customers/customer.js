@@ -2,7 +2,7 @@ const mongoose = require('require');
 const { Schema } = mongoose; 
 
 //We define scheme for costomer 
-const costomerSchema = new Schema({
+const customerSchema = new Schema({
     userId: {
         type: String,
         default: null,
@@ -25,5 +25,5 @@ const costomerSchema = new Schema({
     },
 });
 
-const costomer = mongoose.model('costomer', costomerSchema);
-module.exports = costomer; 
+const costomer = mongoose.model('customer', customerSchema);
+module.exports = customer; 
