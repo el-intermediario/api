@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 //We define scheme for costomer 
 const customerSchema = new Schema({
     userId: {
-        type: Schema.Type.ObjectId,
+        type: Schema.ObjectId,
         ref: 'User',
     },
     typeId: {
