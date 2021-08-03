@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 const bcrypt = require("bcryptjs");
 
 function setPassword(value) {
   return bcrypt.hashSync(value, 10);
 }
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   firstName: {
     type: String,
     required: true
@@ -37,6 +38,5 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
-const model = mongoose.model("User", UserSchema);
-
-module.exports = model;
+const user = mongoose.model("User", UserSchema);
+module.exports = user;

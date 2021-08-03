@@ -1,4 +1,3 @@
-//file path caller
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -14,5 +13,5 @@ const categorySchema = new Schema({
   },
 });
 
-const Category = mongoose.model('Category', categorySchema);
-module.exports = Category;
+const category = mongoose.model('Category', categorySchema);
+module.exports = category;

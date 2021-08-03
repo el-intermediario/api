@@ -1,5 +1,5 @@
 //file path caller
-const mongoose = require('require');
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const AdSchema = new Schema({
@@ -9,5 +9,5 @@ const AdSchema = new Schema({
   },
 });
 
-const Ad = mongose.model("Ad", AdSchema);
+const Ad = mongoose.model("Ad", AdSchema);
 module.exports = Ad;

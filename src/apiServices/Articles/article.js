@@ -1,19 +1,14 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 const slug = require('mongoose-slug-generator');
 mongoose.plugin(slug);
 
 //We define scheme for article
-const articleSchema = new mongoose.Schema({
-  /*
+const articleSchema = new Schema({
   userId: {
-    type: mongoose.Schema.Type.ObjectId,
-    ref: 'User',
-  },*/
-  /*
-  categoryId: {
-    type: mongoose.Schema.Type.ObjectId,
-    ref: 'Category',
-  },*/
+    type: Schema.ObjectId,
+    ref: "User",
+  },
   title: {
     type: String,
     default: null,
@@ -23,6 +18,10 @@ const articleSchema = new mongoose.Schema({
     type: String,
     default: null,
     required: true
+  },
+  category: {
+    type: String,
+    default: null
   },
   date: {
     type: Number,
