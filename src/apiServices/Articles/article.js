@@ -8,10 +8,6 @@ const articleSchema = new mongoose.Schema({
     type: mongoose.Schema.Type.ObjectId,
     ref: 'User',
   },
-  categoryId: {
-    type: mongoose.Schema.Type.ObjectId,
-    ref: 'Category',
-  },
   title: {
     type: String,
     default: null,
@@ -21,6 +17,10 @@ const articleSchema = new mongoose.Schema({
     type: String,
     default: null,
     required: true
+  },
+  category: {
+    type: String,
+    default: null
   },
   date: {
     type: Number,
