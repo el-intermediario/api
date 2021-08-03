@@ -1,5 +1,5 @@
 //file path caller
-const mongoose = require('require');
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 //We define scheme for category
