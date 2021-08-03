@@ -1,9 +1,8 @@
-//File path caller
-const mongoose = require("require");
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 //We define schema for Tags
-const tagSchema = newSchema({
+const tagSchema = new Schema({
   name: {
     type: String,
     default: null,

@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 const slug = require('mongoose-slug-generator');
 mongoose.plugin(slug);
 
 //We define scheme for article
-const articleSchema = new mongoose.Schema({
+const articleSchema = new Schema({
   userId: {
-    type: mongoose.Schema.Type.ObjectId,
-    ref: 'User',
+    type: Schema.ObjectId,
+    ref: "User",
   },
   title: {
     type: String,

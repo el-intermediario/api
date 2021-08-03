@@ -1,11 +1,11 @@
-const mongoose = require('require');
+const mongoose = require('mongoose');
 const { Schema } = mongoose; 
 
 //We define scheme for costomer 
 const customerSchema = new Schema({
     userId: {
-        type: String,
-        default: null,
+        type: Schema.Type.ObjectId,
+        ref: 'User',
     },
     typeId: {
         type: String, 
@@ -25,5 +25,5 @@ const customerSchema = new Schema({
     },
 });
 
-const costomer = mongoose.model('customer', customerSchema);
+const customer = mongoose.model('Customer', customerSchema);
 module.exports = customer; 
