@@ -4,16 +4,14 @@ mongoose.plugin(slug);
 
 //We define scheme for article
 const articleSchema = new mongoose.Schema({
-  /*
   userId: {
     type: mongoose.Schema.Type.ObjectId,
     ref: 'User',
-  },*/
-  /*
+  },
   categoryId: {
     type: mongoose.Schema.Type.ObjectId,
     ref: 'Category',
-  },*/
+  },
   title: {
     type: String,
     default: null,
