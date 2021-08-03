@@ -8,6 +8,10 @@ const categorySchema = new Schema({
     type: String,
     default: null,
   },
+  color: { 
+    type: String,
+    default: null,
+  },
 });
 
 const Category = mongoose.model('Category', categorySchema);
