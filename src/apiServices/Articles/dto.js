@@ -7,7 +7,8 @@ const single = (resource) => ({
     dropline: resource.dropline,
     status: resource.status,
     slug: resource.slug,
-    created: resource.created
+    created: resource.created,
+    section: resource.sections,
   });
   
   const multiple = (resources) => resources.map(resource => single(resource));
