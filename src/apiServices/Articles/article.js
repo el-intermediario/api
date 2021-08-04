@@ -20,8 +20,8 @@ const articleSchema = new Schema({
     required: true
   },
   category: {
-    type: String,
-    default: null
+    type: Array,
+    default: []
   },
   date: {
     type: Number,
