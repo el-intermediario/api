@@ -60,6 +60,11 @@ const articleSchema = new Schema({
   },
   created: {type: Date, default: Date.now},
   updated: {type: Date, default: Date.now},
+  section: {
+    type: String,
+    enum: ["santa_cruz", "patagonia", "argentina"],
+    required: true,
+  },  
 });
 
 const model = mongoose.model("Article", articleSchema);

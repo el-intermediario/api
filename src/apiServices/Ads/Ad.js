@@ -2,12 +2,29 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const AdSchema = new Schema({
+const adSchema = new Schema({
   name: {
     type: String,
     default: null,
   },
+  color: {
+    type: String,
+    default: null,
+  },
+  type: { 
+    type: String, 
+    enum: ["normal","platinum","golds"],
+    required: true,
+  },
+  image: {
+    type: String,
+    default: null,
+  },
+  status: { 
+    type: Boolean, 
+    default: false,
+  },
 });
 
-const Ad = mongoose.model("Ad", AdSchema);
-module.exports = Ad;
+const ad = mongoose.model("ad", adSchema);
+module.exports = ad;
