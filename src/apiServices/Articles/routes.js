@@ -5,7 +5,7 @@ const authorize = require('../../utils/authorize');
 
 // Articles api.
 router.get('/', controller.getArticles);
-router.get('/:path', controller.get);
+router.get('/:id', controller.get);
 router.post('/', authorize(['admin', 'editor']), controller.post);
 
 module.exports = router;

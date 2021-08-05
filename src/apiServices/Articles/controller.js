@@ -20,7 +20,7 @@ async function post(req, res) {
 };
 
 async function get(req, res) {
-  const article = await action.get(req.params.path);
+  const article = await action.get(req.params.id, req.query.by);
   return res.send(dto.single(article));
 };
 

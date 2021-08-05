@@ -13,7 +13,7 @@ const adSchema = new Schema({
   },
   type: { 
     type: String, 
-    enum: ["normal","platinum","golds"],
+    enum: ["normal","platinum","gold"],
     required: true,
   },
   image: {

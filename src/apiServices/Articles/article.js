@@ -23,6 +23,14 @@ const articleSchema = new Schema({
     type: Array,
     default: []
   },
+  categoryKey: {
+    type: String,
+    default: null
+  },
+  categoryParent: {
+    type: String,
+    default: null
+  },
   date: {
     type: Number,
     default: Date.now,
@@ -30,6 +38,11 @@ const articleSchema = new Schema({
   source: {
     type: String,
     default: null,
+  },
+  type: {
+    type: String,
+    enum: ['normal', 'featured', 'sponsor'],
+    default: 'normal',
   },
   dropline: {
     type: String,
@@ -58,13 +71,13 @@ const articleSchema = new Schema({
     type: String, 
     slug: "title" 
   },
-  created: {type: Date, default: Date.now},
-  updated: {type: Date, default: Date.now},
   section: {
     type: String,
     enum: ["santa_cruz", "patagonia", "argentina"],
     required: true,
   },  
+  created: {type: Date, default: Date.now},
+  updated: {type: Date, default: Date.now},
 });
 
 const model = mongoose.model("Article", articleSchema);

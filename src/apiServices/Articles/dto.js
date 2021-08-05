@@ -9,6 +9,10 @@ const single = (resource) => ({
     slug: resource.slug,
     created: resource.created,
     section: resource.section,
+    source: resource.source,
+    category: resource.category,
+    categoryKey: resource.categoryKey,
+    categoryParent: resource.categoryParent,
   });
   
   const multiple = (resources) => resources.map(resource => single(resource));

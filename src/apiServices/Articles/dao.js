@@ -8,8 +8,10 @@ module.exports = {
     }));
   },
 
-  async get(path) {
-    return new Promise((resolve, reject) => Article.findOne({ slug: path }, (err, docs) => {
+  async get(value, by) {
+    let query = {};
+    query[by] = value;
+    return new Promise((resolve, reject) => Article.findOne(query, (err, docs) => {
       if (err) return reject(err);
       return resolve(docs);
     }));

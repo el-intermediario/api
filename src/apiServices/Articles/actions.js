@@ -4,8 +4,8 @@ module.exports = {
   async post(article) {
     return dao.post(article);
   },
-  async get(path) {
-    return dao.get(path);
+  async get(id, by) {
+    return dao.get(id, by);
   },
   async getArticles(page, limit) {
     return dao.getArticles(page, limit);
