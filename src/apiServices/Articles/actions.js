@@ -7,8 +7,8 @@ module.exports = {
   async get(id, by) {
     return dao.get(id, by);
   },
-  async getArticles(page, limit) {
-    return dao.getArticles(page, limit);
+  async getArticles(filters) {
+    return dao.getArticles(filters);
   },
   /*  
   async getProfile(id) {

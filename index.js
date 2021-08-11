@@ -29,8 +29,12 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
 
 // Methods.
 app.get('/', (request, response) => {
+  try {
     // response.set('Cache-Control', 'public, max-age=20, s-maxage=15')
     response.send(`Test server ${os.hostname()} - ${parseInt(Date.now()/1000)}`);
+  } catch (err) {
+    throw new Error('Error at load server.');
+  }
 });
 
 app.get('/privacy-policy', (request, response) => {
