@@ -23,7 +23,7 @@ module.exports = {
       filter = {"title": { "$regex": filters.search , "$options": "i" }};
     }
     if (filters.tags) { // related by tags.
-      const tags = filter.tags.split(',');
+      const tags = filters.tags.split(',');
       filter = { "tags.name": {$in: tags} };
     }
     return new Promise((resolve, reject) => Article.find(filter)
