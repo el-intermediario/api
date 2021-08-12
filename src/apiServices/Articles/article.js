@@ -75,7 +75,11 @@ const articleSchema = new Schema({
     type: String,
     enum: ["santa_cruz", "patagonia", "argentina"],
     required: true,
-  },  
+  },
+  tags: {
+    type: Array,
+    default: []
+  },
   created: {type: Date, default: Date.now},
   updated: {type: Date, default: Date.now},
 });

@@ -28,8 +28,8 @@ async function getArticles(req, res) {
   const page = parseInt((req.query.page || 0).toString(), 10);
   const limit = parseInt((req.query.limit || 10).toString(), 10);
   const search = req.query.search;
-
-  const filters = { page, limit, search };
+  const tags = req.query.tags;
+  const filters = { page, limit, search, tags };
 
   const articles = await action.getArticles(filters);
   return res.send(dto.multiple(articles));

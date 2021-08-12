@@ -13,6 +13,7 @@ const single = (resource) => ({
     category: resource.category,
     categoryKey: resource.categoryKey,
     categoryParent: resource.categoryParent,
+    tags: resource.tags,
   });
   
   const multiple = (resources) => resources.map(resource => single(resource));
