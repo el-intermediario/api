@@ -24,11 +24,11 @@ jobs:
     steps:
     - uses: actions/checkout@master      
     - name: copy files via ssh key
-      uses: appleboy/scp-action@master
+      uses: garygrossgarten/github-action-scp@release
       with:
-        HOST: ${{ secrets.SSH_HOST }}
-        USERNAME: ${{ secrets.SSH_USERNAME }}
-        KEY: ${{ secrets.SSH_KEY }}
-        PORT: ${{ secrets.SSH_PORT }}
-        SOURCE: "./"
-        TARGET: "/root/project/api"      
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        privateKey: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        source: "./"
+        target: "/root/project/api"      
