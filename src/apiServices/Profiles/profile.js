@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 // Define schema for todo items
 const profileSchema = new Schema({
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.ObjectId,
     ref: 'User'
   },
   firstName: {
