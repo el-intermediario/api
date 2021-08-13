@@ -26,8 +26,8 @@ jobs:
     - name: copy files via ssh key
       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
-        source: "./"
-        target: "/root/project/api"      
+        HOST: ${{ secrets.SSH_HOST }}
+        USERNAME: ${{ secrets.SSH_USERNAME }}
+        KEY: ${{ secrets.SSH_KEY }}
+        SOURCE: "./"
+        TARGET: "/root/project/api"      
