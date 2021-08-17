@@ -1,7 +1,7 @@
 const redis = require('redis');
 const clientRedis = redis.createClient({host: 'redis'});
-dto = require('./dto'); 
-action = require('./actions');
+const dto = require('./dto'); 
+const action = require('./actions');
 
 async function post(req, res) { 
     const ad = await action.post(req.body);
@@ -9,7 +9,7 @@ async function post(req, res) {
 };
 
 async function get(req, res) {
-    const order = await order.get(req.params.path);
+    const order = await action.get(req.params.path);
     return res.send(dto.single(order));
 };
 
