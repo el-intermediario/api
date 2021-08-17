@@ -18,13 +18,19 @@ module.exports = {
   },
 
   async getArticles({page, limit, ...filters}) {
+    console.log(filters);
     let filter = {};
     if (filters.search) { // Search.
       filter = {"title": { "$regex": filters.search , "$options": "i" }};
     }
     if (filters.tags) { // related by tags.
       const tags = filters.tags.split(',');
-      filter = { "tags.name": {$in: tags} };
+      filter = {
+        $and: [
+          { "tags.name": {$in: tags} },
+          { _id: {$ne: filters.idOffset} },
+         ]
+      };
     }
     return new Promise((resolve, reject) => Article.find(filter)
     .skip(page * limit).limit(limit).exec((err, docs) => {
