@@ -24,5 +24,5 @@ const coverSchema = new Schema({
     },
 });
 
-const Cover = mogoose.module('Cover', coverSchema); 
+const Cover = mongoose.model('Cover', coverSchema); 
 module.exports = Cover; 
