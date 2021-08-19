@@ -1,5 +1,5 @@
 const single = (resource) => ({
-  id: resource.id,
+  id: resource._id,
   description: resource.description,
   dateEnd: resource.dateEnd,
   paymentId: resource.paymentId,
