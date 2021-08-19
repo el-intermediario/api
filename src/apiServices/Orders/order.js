@@ -24,5 +24,5 @@ const orderSchema = new Schema({
     },
 });
 
-const Order = moongose.model('Order', orderSchema);
-moduele.exports = Order;
+const order = moongose.model('Order', orderSchema);
+module.exports = order;
