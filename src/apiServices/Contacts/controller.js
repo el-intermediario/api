@@ -9,7 +9,7 @@ async function post(req, res) {
 };
 
 async function get(req, res) {
-    const contact = await contact.get(req.params.path);
+    const contact = await action.get(req.params.path);
     return res.send(dto.single(contact));
 };
 
