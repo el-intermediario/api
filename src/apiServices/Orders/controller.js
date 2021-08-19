@@ -1,7 +1,7 @@
 const redis = require('redis');
 const clientRedis = redis.createClient({host: 'redis'});
-dto = require('./dto'); 
-action = require('./actions');
+const dto = require('./dto'); 
+const action = require('./actions');
 
 async function post(req, res) { 
     const ad = await action.post(req.body);
