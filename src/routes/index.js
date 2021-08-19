@@ -12,6 +12,8 @@ const adsRouter = require('../apiServices/Ads/routes');
 const emailRouter = require('../services/SendEmail');
 const usersRouter = require('../apiServices/Users/routes');
 const orderRouter = require('../apiServices/Orders/routes');
+const coverRouter = require('../apiServices/Covers/routes');
+const videoRouter = require('../apiServices/Videos/routes');
 
 const router = express.Router();
 router.use('/auth', authRouter);
@@ -23,6 +25,8 @@ router.use('/tags', tagsRouter);
 router.use('/send-email', emailRouter);
 router.use('/users', usersRouter);
 router.use('/orders', orderRouter);
+router.use('/covers', coverRouter);
+router.use('/videos', videoRouter);
 
 router.post("/upload", upload, uploadController.uploadFile);
 
