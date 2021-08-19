@@ -9,7 +9,7 @@ async function post(req, res) {
 };
 
 async function get(req, res) {
-    const order = await order.get(req.params.path);
+    const order = await action.get(req.params.path);
     return res.send(dto.single(order));
 };
 
