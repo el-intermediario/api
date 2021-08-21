@@ -1,12 +1,12 @@
 const single = (resource) => ({
-    token: token.resource,
-    customerId: customerId.resource,
-    lastFour: lastFour.resource,
-    lastSix: lastSix.resource,
-    brand: brand.resource,
+    token: resource.token,
+    customerId: resource.customerId,
+    lastFour: resource.lastFour,
+    lastSix: resource.lastSix,
+    brand: resource.brand,
 });
 
-const multiple = (resources) => resource.map((resource) => single(resource));
+const multiple = (resources) => resources.map((resource) => single(resource));
 
 module.exports = {
     single,
