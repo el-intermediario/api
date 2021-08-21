@@ -1,12 +1,12 @@
 const single = (resource) => ({
-    userId: userId.resource,
-    typeId: typeId.resource,
-    numberId: numberId.resource,
-    firstName: firstName.resource,
-    lastName: lastName.resource,
+    userId: resource.userId,
+    typeId: resource.typeId,
+    numberId: resource.numberId,
+    firstName: resource.firstName,
+    lastName: resource.lastName,
 });
 
-const multiple = (resources) => resource.map((resource) => single(resource));
+const multiple = (resources) => resources.map((resource) => single(resource));
 
 module.exports = {
     single,
