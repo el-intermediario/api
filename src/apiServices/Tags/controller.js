@@ -9,7 +9,7 @@ async function post(req, res) {
 };
 
 async function get(req, res) {
-    const tag = await tag.get(req.params.path);
+    const tag = await action.get(req.params.path);
     return res.send(dto.single(tag));
 };
 

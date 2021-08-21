@@ -19,7 +19,6 @@ async function getOrder(req, res) {
         if (data) {
             res.status(200).send(JSON.parse(data));
         }else {
-
         }
     });
 }

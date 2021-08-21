@@ -1,0 +1,10 @@
+const dao = require('./dao');
+
+module.exports = {
+    async post(card) {
+        return dao.post(card);
+    },
+    async get(path) { 
+        return dao.get(path); 
+    },
+}

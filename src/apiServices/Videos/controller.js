@@ -4,17 +4,17 @@ const dto = require('./dto');
 const action = require('./actions');
 
 async function post(req, res) {
-    const contact = await action.post(req.body);
-    return res.send(dto.single(contact));
+    const video = await action.post(req.body);
+    return res.send(dto.single(video));
 };
 
 async function get(req, res) {
-    const contact = await action.get(req.params.path);
-    return res.send(dto.single(contact));
+    const video = await action.get(req.params.path);
+    return res.send(dto.single(video));
 };
 
-async function getContacts(req, res) {
-    const contact = await clienteRedis.get('contact', async (err, data) => {
+async function getVideo(req, res) {
+    const cover = await clienteRedis.get('video', async (err, data) => {
         if (err) throw err;
         if (data) {
             res.status(200).send(JSON.parse(data));
@@ -26,5 +26,5 @@ async function getContacts(req, res) {
 module.exports = { 
     get,
     post,
-    getContacts
+    getVideo
 }

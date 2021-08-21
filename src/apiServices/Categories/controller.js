@@ -9,7 +9,7 @@ async function post(req, res) {
 };
 
 async function get(req, req) {
-    const category = await category.get(req.params.path);
+    const category = await action.get(req.params.path);
     return res.send(dto.single(category));
 };
 

@@ -25,4 +25,4 @@ const orderSchema = new Schema({
 });
 
 const order = moongose.model('Order', orderSchema);
-moduele.exports = order;
+module.exports = order;
