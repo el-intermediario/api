@@ -1,8 +1,8 @@
 const single = (resource) => ({
-    title: title.resource,
-    type: type.resource,
-    created: created.resource,
-    category: category.resource,
+    title: resource.title,
+    type: resource.type,
+    created: resource.created,
+    category: resource.category,
     
 });
 
