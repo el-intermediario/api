@@ -8,7 +8,7 @@ module.exports = {
         }));
     }, 
     async get(path) {
-        return new Promise((resolve, reject)=> Video.fieldOne( { slug: path }, (err, docs) => {
+        return new Promise((resolve, reject)=> Video.findOne( { slug: path }, (err, docs) => {
             if(err) return reject(err); 
             return resolve(docs);
         }));
