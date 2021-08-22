@@ -10,7 +10,7 @@ const single = (resource) => ({
     section: resource.section,
 });
 
-const multiple = (resources) => resource.map(resource => single(resource));
+const multiple = (resources) => resources.map(resource => single(resource));
 
 module.exports = {
     single,
