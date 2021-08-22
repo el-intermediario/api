@@ -33,7 +33,7 @@ async function getArticles(req, res) {
   const filters = { page, limit, search, tags, idOffset };
 
   const articles = await action.getArticles(filters);
-  return res.send(dto.multiple(articles));
+  return res.send(dto.multipleTeaser(articles));
 
   /*
   const articles = await clientRedis.get('articles', async (err, data) => {

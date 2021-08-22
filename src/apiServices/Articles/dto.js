@@ -15,10 +15,24 @@ const single = (resource) => ({
     categoryParent: resource.categoryParent,
     tags: resource.tags,
   });
-  
+
   const multiple = (resources) => resources.map(resource => single(resource));
+
+  const teaser = (resource) => ({
+    id: resource._id,
+    title: resource.title,
+    image: resource.image,
+    copete: resource.copete,
+    dropline: resource.dropline,
+    slug: resource.slug,
+    created: resource.created,
+  });
+  
+  const multipleTeaser = (resources) => resources.map(resource => teaser(resource));
   
   module.exports = {
     single,
-    multiple
+    teaser,
+    multiple,
+    multipleTeaser
   }
