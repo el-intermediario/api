@@ -8,7 +8,7 @@ module.exports = {
         }));
     },
     async get(path) { 
-        return new Promise((resolve, reject)=> Customer.fieldOne( { slug: path }, (err, docs) => {
+        return new Promise((resolve, reject)=> Customer.findOne( { slug: path }, (err, docs) => {
             if(err) return reject(err);
             return resolve(docs);
         }));
