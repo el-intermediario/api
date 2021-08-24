@@ -7,7 +7,7 @@ async function post(req, res) {
 };
 
 async function get(req, res) {
-  const cover = await action.get(req.params.id);
+  const cover = await action.get();
   return res.send(dto.single(cover));
 };
 

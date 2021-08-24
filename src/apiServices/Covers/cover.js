@@ -17,11 +17,11 @@ const coverSchema = new Schema({
     layout: { 
         type: Array,
         default: [],
-    }, 
-    ids: {
-        type: Array, 
-        default: [],
     },
+    status: { 
+        type: Boolean, 
+        default: false,
+    }
 });
 
 const Cover = mongoose.model('Cover', coverSchema); 
