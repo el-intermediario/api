@@ -4,7 +4,7 @@ const dto = require('./dto');
 const action = require('./actions');
 
 async function post(req, res) { 
-    const ad = await action.post(req.body);
+    const order = await action.post(req.body);
     return res.send(dto.single(order));
 };
 
@@ -13,7 +13,7 @@ async function get(req, res) {
     return res.send(dto.single(order));
 };
 
-async function getOrder(req, res) {
+async function getOrders(req, res) {
     const order = await clientRedis.get('order', async (err, data) => {
         if (err) throw err;
         if (data) {
@@ -26,5 +26,5 @@ async function getOrder(req, res) {
 module.exports = { 
     get,
     post,
-    getOrder
+    getOrders,
 }

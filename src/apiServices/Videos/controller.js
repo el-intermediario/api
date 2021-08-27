@@ -13,8 +13,8 @@ async function get(req, res) {
     return res.send(dto.single(video));
 };
 
-async function getVideo(req, res) {
-    const cover = await clienteRedis.get('video', async (err, data) => {
+async function getVideos(req, res) {
+    const video = await clienteRedis.get('video', async (err, data) => {
         if (err) throw err;
         if (data) {
             res.status(200).send(JSON.parse(data));
@@ -26,5 +26,5 @@ async function getVideo(req, res) {
 module.exports = { 
     get,
     post,
-    getVideo
+    getVideos,
 }

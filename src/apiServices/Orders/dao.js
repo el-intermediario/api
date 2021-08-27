@@ -1,15 +1,15 @@
-const  order = require('./order');
+const  Order = require('./order');
 
 module.exports = {
     async post(order) {
-        return new Promise((resolve, reject) => order.create(order, (err, docs) => {
+        return new Promise((resolve, reject) => Order.create(order, (err, docs) => {
             if (err) return reject(err); 
             return resolve(docs); 
         })); 
     }, 
 
     async get(path) { 
-        return new Promise((resolve, reject) => order.findOne({slug: path},(err, docs) => {
+        return new Promise((resolve, reject) => Order.findOne({slug: path},(err, docs) => {
             if (err) return reject(err); 
             return resolve(docs); 
         }));

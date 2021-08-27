@@ -7,14 +7,14 @@ const card = require('./card');
 async function post(req, res) {
     const card = await action.post(req.body);
     return res.send(dto.single(card));
-};
+}
 
 async function get(req, res) {
     const customer = await action.get(req.params.path);
     return res.send(dto.single(card));
-};
+}
 
-async function getCard(req, res) {
+async function getCards(req, res) {
     const card = await clienteRedis.get('card', async(err, data) => {
         if(err) throw err;
         if(data) {
@@ -27,5 +27,5 @@ async function getCard(req, res) {
 module.exports = {
     get,
     post, 
-    getCard
+    getCards,
 }

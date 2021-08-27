@@ -7,10 +7,10 @@ const adSchema = new Schema({
     type: String,
     default: null,
   },
-  type: { 
+  type: {
     type: String, 
-    enum: ["normal","platinum","gold"],
-    required: true,
+    enum: ['normal', 'platinum', 'gold'],
+    require: true,
   },
   image: {
     type: String,
@@ -35,8 +35,8 @@ const adSchema = new Schema({
   status: { 
     type: Boolean, 
     default: false,
-  },
+  }
 });
 
-const ad = mongoose.model("ad", adSchema);
+const ad = mongoose.model('Ad', adSchema);
 module.exports = ad;

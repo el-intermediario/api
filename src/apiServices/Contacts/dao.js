@@ -1,8 +1,8 @@
 const Contact = require('./contact');
 
 module.exports = {
-  async post(Contact) {
-    return new Promise((resolve, reject) => Contact.create(Contact, (err, docs) => {
+  async post(contact) {
+    return new Promise((resolve, reject) => Contact.create(contact, (err, docs) => {
       if (err) return reject(err);
       return resolve(docs);
     }));

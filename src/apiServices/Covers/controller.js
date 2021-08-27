@@ -13,7 +13,7 @@ async function get(req, res) {
     return res.send(dto.single(cover));
 };
 
-async function getCover(req, res) {
+async function getCovers(req, res) {
     const cover = await clienteRedis.get('cover', async (err, data) => {
         if (err) throw err;
         if (data) {
@@ -26,5 +26,5 @@ async function getCover(req, res) {
 module.exports = { 
     get,
     post,
-    getCover
+    getCovers
 }

@@ -5,7 +5,7 @@ const uploadController = require("../apiServices/Upload/controller");
 // Routes.
 const authRouter = require('../apiServices/Auth/routes');
 const articlesRouter = require('../apiServices/Articles/routes');
-const categoriesRouter = require('../apiServices/Categories/routes');
+const categoriesRouter = require('../apiServices/Categories/routes')
 const contactsRouter = require('../apiServices/Contacts/routes');
 const tagsRouter = require('../apiServices/Tags/routes');
 const adsRouter = require('../apiServices/Ads/routes');
@@ -13,10 +13,10 @@ const emailRouter = require('../services/SendEmail');
 const usersRouter = require('../apiServices/Users/routes');
 const ordersRouter = require('../apiServices/Orders/routes');
 const coversRouter = require('../apiServices/Covers/routes');
-const videosRouter = require('../apiServices/Videos/routes');
 const cardsRouter = require('../apiServices/Cards/routes');
 const customersRouter = require('../apiServices/Customers/routes');
-const pagesRouter = require('../apiServices/Pages/routes')
+const pagesRouter = require('../apiServices/Pages/routes');
+const videosRouter = require('../apiServices/Videos/routes');
 
 const router = express.Router();
 router.use('/auth', authRouter);

@@ -1,8 +1,8 @@
-const customer = require('./customer');
+const Customer = require('./customer');
 
 module.exports = { 
-    async post(Customer) {
-        return new Promise((resolve, reject) => Customer.create(Customer, (err, docs) => {
+    async post(customer) {
+        return new Promise((resolve, reject) => Customer.create(customer, (err, docs) => {
             if(err) return reject(err);
             return resolve(docs);
         }));

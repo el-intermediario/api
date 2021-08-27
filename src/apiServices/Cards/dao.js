@@ -1,14 +1,14 @@
-const card = require('./card');
+const Card = require('./card');
 
 module.exports = {
     async post(card) {
-        return new Promise((resolve, reject) => card.create(card, (err, docs) => {
+        return new Promise((resolve, reject) => Card.create(card, (err, docs) => {
             if(err) return reject(err);
             return resolve(docs);
         }));
     },
     async get(path) {
-        return new Promise((resolve, reject) => card.findOne({ slug: path }, (err, docs) => {
+        return new Promise((resolve, reject) => Card.findOne({ slug: path }, (err, docs) => {
             if(err) return reject(err);
             return resolve(docs);
         }));
