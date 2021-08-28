@@ -39,10 +39,9 @@ const articleSchema = new Schema({
     type: String,
     default: null,
   },
-  type: {
-    type: String,
-    enum: ['normal', 'featured', 'sponsor'],
-    default: 'normal',
+  featured: {
+    type: Boolean,
+    default: false,
   },
   dropline: {
     type: String,

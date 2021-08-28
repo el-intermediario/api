@@ -19,6 +19,14 @@ module.exports = {
 
   async getArticles({page, limit, ...filters}) {
     let filter = {};
+    if(filters.trending) { // Filter per featured articles.
+      filter = {
+        $and: [
+          { "featured": true },
+          { _id: {$ne: filters.idOffset} },
+         ]
+      };
+    }
     if (filters.search) { // Search.
       filter = {"title": { "$regex": filters.search , "$options": "i" }};
     }
