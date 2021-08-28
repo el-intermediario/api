@@ -13,7 +13,7 @@ async function get(req, res) {
     return res.send(dto.single(customer));
 };
 
-async function getCustomer(req, res) {
+async function getCustomers(req, res) {
     const customer = await clienteRedis.get('customer', async (err, data) => {
         if (err) throw err;
         if (data) {
@@ -26,5 +26,5 @@ async function getCustomer(req, res) {
 module.exports = { 
     get,
     post,
-    getCustomer
+    getCustomers,
 }

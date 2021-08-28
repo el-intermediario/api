@@ -1,8 +1,8 @@
 const Tag = require('./tag');
 
 module.exports = { 
-    async post(Tag) {
-        return new Promise((resolve, reject) => Tag.create(Tag, (err, docs) => {
+    async post(tag) {
+        return new Promise((resolve, reject) => Tag.create(tag, (err, docs) => {
             if (err) return reject(err); 
             return resolve(docs)
         }));

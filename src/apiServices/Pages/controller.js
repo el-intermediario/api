@@ -4,17 +4,17 @@ const dto = require('./dto');
 const action = require('./actions');
 
 async function post(req, res) {
-    const ad = await action.post(req.body);
-    return res.send(dto.single(ad));
+    const page = await action.post(req.body);
+    return res.send(dto.single(page));
 }
 
 async function get(req, res) {
-    const ad = await action.get(req.params.path);
-    return res.send(dto.single(ad));
+    const page = await action.get(req.params.path);
+    return res.send(dto.single(page));
 }
 
-async function getAds(req, res) {
-    const ad = await  clientRedis.get('ad', async (err, data) => {
+async function getPages(req, res) {
+    const page = await  clientRedis.get('page', async (err, data) => {
         if (err) throw err; 
         if (data) {
             res.status(200).send(JSON.parse(data));
@@ -26,5 +26,5 @@ async function getAds(req, res) {
 module.exports = {
     get,
     post,
-    getAds,
+    getPages,
 }

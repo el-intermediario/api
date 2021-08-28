@@ -26,5 +26,5 @@ async function getTags(req, res) {
 module.exports = {
     get,
     post,
-    getTags
+    getTags,
 }
