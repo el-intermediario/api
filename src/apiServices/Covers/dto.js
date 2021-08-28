@@ -3,6 +3,7 @@ const single = (resource) => ({
   featured: resource.featured,
   title: resource.title,
   layout: resource.layout,
+  status: resource.status
 });
 
 const multiple = (resources) => resources.map((resource) => single(resource));
