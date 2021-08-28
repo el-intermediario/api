@@ -14,14 +14,10 @@ async function get(req, res) {
 }
 
 async function getAds(req, res) {
-    const ad = await  clientRedis.get('ad', async (err, data) => {
-        if (err) throw err; 
-        if (data) {
-            res.status(200).send(JSON.parse(data));
-        } else {
-        }
-    });
+    const ad = await action.getAds();
+    return res.send(dto.multiple(ad));
 }
+
 
 module.exports = {
     get,
