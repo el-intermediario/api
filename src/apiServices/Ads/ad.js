@@ -11,6 +11,7 @@ const adSchema = new Schema({
     type: String, 
     enum: ['normal', 'platinum', 'gold'],
     require: true,
+    default: "normal", 
   },
   image: {
     type: String,

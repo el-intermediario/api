@@ -14,4 +14,11 @@ module.exports = {
             return resolve(docs); 
         }));
     },
+
+    async getAds() {
+        return new Promise((resolve, reject) => Ad.find({}, (err, docs) => {
+            if (err) return reject(err);
+            return resolve(docs); 
+        }));
+    },
 }
