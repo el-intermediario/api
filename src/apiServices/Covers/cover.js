@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const coverSchema = new Schema({
     created: {
         type: Number,
-        default: null, 
+        default: Date.now(), 
     },
     featured: {
         type: Boolean, 
@@ -14,14 +14,14 @@ const coverSchema = new Schema({
         type: String,
         default: null,
     }, 
-    content: { 
+    layout: { 
         type: Array,
         default: [],
-    }, 
-    ids: {
-        type: Array, 
-        default: [],
     },
+    status: { 
+        type: Boolean, 
+        default: false,
+    }
 });
 
 const Cover = mongoose.model('Cover', coverSchema); 

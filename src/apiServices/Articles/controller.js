@@ -29,10 +29,11 @@ async function getArticles(req, res) {
   const limit = parseInt((req.query.limit || 10).toString(), 10);
   const search = req.query.search;
   const tags = req.query.tags;
-  const filters = { page, limit, search, tags };
+  const idOffset = req.query.idOffset;
+  const filters = { page, limit, search, tags, idOffset };
 
   const articles = await action.getArticles(filters);
-  return res.send(dto.multiple(articles));
+  return res.send(dto.multipleTeaser(articles));
 
   /*
   const articles = await clientRedis.get('articles', async (err, data) => {

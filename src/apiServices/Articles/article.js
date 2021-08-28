@@ -80,8 +80,8 @@ const articleSchema = new Schema({
     type: Array,
     default: []
   },
-  created: {type: Date, default: Date.now},
-  updated: {type: Date, default: Date.now},
+  created: {type: Number, default: Date.now()},
+  updated: {type: Number, default: Date.now()},
 });
 
 const model = mongoose.model("Article", articleSchema);
