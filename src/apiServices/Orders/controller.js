@@ -14,13 +14,8 @@ async function get(req, res) {
 };
 
 async function getOrders(req, res) {
-    const order = await clientRedis.get('order', async (err, data) => {
-        if (err) throw err;
-        if (data) {
-            res.status(200).send(JSON.parse(data));
-        }else {
-        }
-    });
+    const order = await action .getOrders();
+    return res.send(dto.multiple(order));
 }
 
 module.exports = { 

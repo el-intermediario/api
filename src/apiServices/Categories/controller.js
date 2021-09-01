@@ -14,13 +14,8 @@ async function get(req, req) {
 }
 
 async function getCategories(req, res) {
-    const category = await clientRedis.get('category', async (err, data) => {
-        if (err) throw err;
-        if (data) {
-            res.status(200).send(JSON.parse(data));
-        }else {
-        }
-    });
+    const category = await action.getCategories();
+    return res.send(dto.multiple(category));
 }
 
 module.exports = {

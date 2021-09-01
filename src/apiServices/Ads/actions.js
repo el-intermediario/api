@@ -1,4 +1,3 @@
-const { getAds } = require('./dao');
 const dao = require('./dao');
 
 module.exports = {
@@ -8,7 +7,6 @@ module.exports = {
   async get(path) {
     return dao.get(path);
   },
-
   async getAds() {
     return dao.getAds();
   }, 

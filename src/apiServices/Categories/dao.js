@@ -1,4 +1,5 @@
 const Category = require('./category');
+const { getCategories } = require('./controller');
 
 module.exports = {
   async post(category) {
@@ -13,4 +14,10 @@ module.exports = {
       return resolve(docs);
     }));
   },
+  async getCategories() {
+    return new Promise((resolve, reject) => Category.find({}, (err, docs) => {
+      if(err) return reject(err);
+      return resolve(docs);
+    }) )
+  }
 }

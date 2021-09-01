@@ -1,3 +1,4 @@
+const { getOrders } = require('./actions');
 const  Order = require('./order');
 
 module.exports = {
@@ -14,4 +15,11 @@ module.exports = {
             return resolve(docs); 
         }));
     },
+
+    async getOrders() { 
+        return new Promise((resolve, reject) => Order.find({}, (err, docs) => {
+            if(err) return reject(err);
+            return resolve(docs);
+        }));
+    }
 }

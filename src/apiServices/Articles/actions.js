@@ -4,11 +4,14 @@ module.exports = {
   async post(article) {
     return dao.post(article);
   },
-  async get(id, by) {
+  async get(id, by ) {
     return dao.get(id, by);
   },
   async getArticles(filters) {
     return dao.getArticles(filters);
+  },
+  async getCount(count) {
+    return dao.get(count);
   },
   /*  
   async getProfile(id) {

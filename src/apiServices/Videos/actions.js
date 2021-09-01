@@ -7,4 +7,7 @@ module.exports = {
 async get(path) {
     return dao.get(path);
 },
+async getVideos() {
+    return dao.getVideos();
+},
 }

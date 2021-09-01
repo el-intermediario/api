@@ -1,4 +1,5 @@
 const Contact = require('./contact');
+const { getContacts } = require('./controller');
 
 module.exports = {
   async post(contact) {
@@ -7,11 +8,16 @@ module.exports = {
       return resolve(docs);
     }));
   },
-
   async get(path) {
     return new Promise((resolve, reject) => Contact.findOne({ slug: path }, (err, docs) => {
       if (err) return reject(err);
       return resolve(docs);
+    }));
+  },
+  async getContacts() {
+    return new Promise((resolve, reject) => Contact.find({}, (err, docs) => {
+        if (err) return reject(err);
+        return resolve(docs); 
     }));
   },
 }

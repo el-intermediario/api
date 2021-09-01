@@ -79,6 +79,10 @@ const articleSchema = new Schema({
     type: Array,
     default: []
   },
+  count: {
+    type: Number,
+    default: null, 
+  },
   created: {type: Number, default: Date.now()},
   updated: {type: Number, default: Date.now()},
 });

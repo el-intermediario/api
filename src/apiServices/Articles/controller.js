@@ -24,6 +24,11 @@ async function get(req, res) {
   return res.send(dto.single(article));
 };
 
+async function getCount(req, res) {
+  const article = await action.get(req.params.id.count);
+  return res.send(dto.single(article));
+};
+
 async function getArticles(req, res) {
   const trending = req.query.trending;
   const page = parseInt((req.query.page || 0).toString(), 10);
@@ -58,5 +63,6 @@ async function getArticles(req, res) {
 module.exports = {
   get,
   post,
-  getArticles
+  getArticles, 
+  getCount,
 }

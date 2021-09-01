@@ -7,5 +7,6 @@ const authorize = require('../../utils/authorize');
 router.get('/', controller.getArticles);
 router.get('/:id', controller.get);
 router.post('/', authorize(['admin', 'editor']), controller.post);
+router.get('/:id/:count', controller.getCount); 
 
 module.exports = router;

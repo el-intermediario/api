@@ -13,4 +13,11 @@ module.exports = {
             return resolve(docs);
         }));
     },
+
+    async getTags() {
+        return new Promise((resolve, reject) => Tag.find({}, (err, docs) => {
+            if(err) return reject(err);
+            return resolve(docs);
+        }));
+    },
 }
