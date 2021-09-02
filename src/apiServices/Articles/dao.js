@@ -8,6 +8,17 @@ module.exports = {
     }));
   },
 
+  async put(id, article) {
+    const filter = { "_id": id };
+    const update = article;
+    return new Promise((resolve, reject) => Article.findOneAndUpdate(filter, update, {
+      new: true
+    }, (err, docs) => {
+      if (err) return reject(err);
+      return resolve(docs);
+    }));
+  },
+
   async get(value, by) {
     let query = {};
     query[by] = value;

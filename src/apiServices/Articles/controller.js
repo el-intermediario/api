@@ -19,6 +19,11 @@ async function post(req, res) {
   return res.send(dto.single(article));
 };
 
+async function put(req, res) {
+  const article = await action.put(req.params.id, req.body);
+  return res.send(dto.single(article));
+};
+
 async function get(req, res) {
   const article = await action.get(req.params.id, req.query.by);
   return res.send(dto.single(article));
@@ -58,5 +63,6 @@ async function getArticles(req, res) {
 module.exports = {
   get,
   post,
+  put,
   getArticles
 }
