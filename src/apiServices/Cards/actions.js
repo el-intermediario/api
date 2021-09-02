@@ -1,3 +1,4 @@
+const { getCards } = require('./controller');
 const dao = require('./dao');
 
 module.exports = {
@@ -6,5 +7,8 @@ module.exports = {
     },
     async get(path) { 
         return dao.get(path); 
+    },
+    async getCards() {
+        return dao.getCards();
     },
 }

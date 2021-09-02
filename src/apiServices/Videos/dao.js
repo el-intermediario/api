@@ -14,4 +14,11 @@ module.exports = {
             return resolve(docs); 
         }));
     },
+
+    async getVideos() {
+        return new Promise((resolve, reject) => Video.find({}, (err, docs) => {
+            if (err) return reject(err);
+            return resolve(docs); 
+        }));
+    },
 }

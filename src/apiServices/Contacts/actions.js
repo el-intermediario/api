@@ -1,3 +1,4 @@
+const { getContacts } = require('./dao');
 const dao = require('./dao');
 
 module.exports = {
@@ -7,4 +8,8 @@ module.exports = {
     async get(path) { 
         return dao.get(path); 
     },
+    async getContacts() {
+        return dao.getContacts();
+    },
+    
 }

@@ -1,3 +1,4 @@
+const { getCards } = require('./actions');
 const Card = require('./card');
 
 module.exports = {
@@ -11,6 +12,12 @@ module.exports = {
         return new Promise((resolve, reject) => Card.findOne({ slug: path }, (err, docs) => {
             if(err) return reject(err);
             return resolve(docs);
+        }));
+    },
+    async getCards() {
+        return new Promise((resolve, reject) => Card.find({}, (err, docs) => {
+            if (err) return reject(err);
+            return resolve(docs); 
         }));
     },
 }

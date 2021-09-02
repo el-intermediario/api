@@ -31,7 +31,7 @@ router.use('/orders', ordersRouter);
 router.use('/covers', coversRouter);
 router.use('/videos', videosRouter);
 router.use('/cards', cardsRouter);
-router.use('/costumers', customersRouter);
+router.use('/customers', customersRouter);
 router.use('/pages', pagesRouter); 
 
 router.post("/upload", upload, uploadController.uploadFile);

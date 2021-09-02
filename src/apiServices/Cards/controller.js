@@ -10,18 +10,13 @@ async function post(req, res) {
 }
 
 async function get(req, res) {
-    const customer = await action.get(req.params.path);
+    const card = await action.get(req.params.path);
     return res.send(dto.single(card));
 }
 
 async function getCards(req, res) {
-    const card = await clienteRedis.get('card', async(err, data) => {
-        if(err) throw err;
-        if(data) {
-            res.status(200).send(JSON.parse(data));
-        }else {
-        }
-    });
+    const card = await action.getCards();
+    return res.send(dto.multiple(card));
 }
 
 module.exports = {
