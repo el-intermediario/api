@@ -20,6 +20,13 @@ module.exports = {
   },
 
   async get(value, by) {
+    // Increment counter.
+    const filter = {},
+          update = { $inc: { counter: 1 }};
+    filter[by] = value,
+    await Article.updateOne(filter, update).exec();
+
+    // Get Data.
     let query = {};
     query[by] = value;
     return new Promise((resolve, reject) => Article.findOne(query, (err, docs) => {
@@ -41,12 +48,22 @@ module.exports = {
     if (filters.search) { // Search.
       filter = {"title": { "$regex": filters.search , "$options": "i" }};
     }
+    
+    return new Promise((resolve, reject) => Article.find(filter)
+    .skip(page * limit).limit(limit).exec((err, docs) => {
+        if (err) return reject(err);
+        return resolve(docs);
+      }));
+  },
+
+  async ArticlesRelated({page, limit, ...filters}) {
+    let filter = {};
     if (filters.tags) { // related by tags.
       const tags = filters.tags.split(',');
       filter = {
         $and: [
           { "tags.name": {$in: tags} },
-          { _id: {$ne: filters.idOffset} },
+          { _id: {$ne: filters.offsetId} },
          ]
       };
     }

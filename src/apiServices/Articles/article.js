@@ -20,15 +20,7 @@ const articleSchema = new Schema({
     required: true
   },
   category: {
-    type: Array,
-    default: []
-  },
-  categoryKey: {
-    type: String,
-    default: null
-  },
-  categoryParent: {
-    type: String,
+    type: Object,
     default: null
   },
   date: {
@@ -79,9 +71,9 @@ const articleSchema = new Schema({
     type: Array,
     default: []
   },
-  count: {
+  counter: {
     type: Number,
-    default: null, 
+    default: 0, 
   },
   created: {type: Number, default: Date.now()},
   updated: {type: Number, default: Date.now()},
