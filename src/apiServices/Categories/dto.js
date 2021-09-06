@@ -1,6 +1,6 @@
 const single = (resource) => ({
-    name: resource.name,
-    color: resource.color,
+    type: resource.type,
+    data: resource.data,
 });
 
 const multiple = (resources) => resources.map((resource) => single(resource));

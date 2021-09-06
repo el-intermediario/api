@@ -2,13 +2,10 @@ const { getCategories } = require('./controller');
 const dao = require('./dao');
 
 module.exports = {
-  async post(category) {
-    return dao.post(category);
+  async put(category) {
+    return dao.put(category);
   },
-  async get(path) {
-    return dao.get(path);
-  },
-  async getCategories() {
-    return dao.getCategories();
-  },
+  async get(type) {
+    return dao.get(type);
+  }
 }
