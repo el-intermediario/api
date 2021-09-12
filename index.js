@@ -22,10 +22,18 @@ app.use(express.urlencoded({ extended: false }));
 app.set('port', process.env.PORT || 3000);
 
 // Connect Mongodb.
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}${process.env.MONGO_URL}`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const connectDB = async () => {
+  try {
+    mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}${process.env.MONGO_URL}`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('DB connected!!');
+  } catch (err) {
+      console.log('Failed to connect to DB', err);
+  }
+};
+connectDB();
 
 // Methods.
 app.get('/', (request, response) => {
