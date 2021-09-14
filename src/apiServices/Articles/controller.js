@@ -30,13 +30,11 @@ async function get(req, res) {
 };
 
 async function Articles(req, res) {
-  const trending = req.query.trending;
   const page = parseInt((req.query.page || 0).toString(), 10);
   const limit = parseInt((req.query.limit || 10).toString(), 10);
-  const search = req.query.search;
-  const filters = { page, limit, search, trending };
+  const query = {...req.query, page, limit};
 
-  const articles = await action.getArticles(filters);
+  const articles = await action.getArticles(query);
   return res.send(dto.multipleTeaser(articles));
 
   /*

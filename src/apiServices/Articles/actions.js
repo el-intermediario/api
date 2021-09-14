@@ -10,8 +10,8 @@ module.exports = {
   async put(id, article) {
     return dao.put(id, article);
   },
-  async getArticles(filters) {
-    return dao.getArticles(filters);
+  async getArticles(query) {
+    return dao.getArticles(query);
   },
   async ArticlesRelated(filters) {
     return dao.ArticlesRelated(filters);

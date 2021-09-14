@@ -35,22 +35,47 @@ module.exports = {
     }));
   },
 
-  async getArticles({page, limit, ...filters}) {
+  async getArticles(query) {
     let filter = {};
-    if(filters.trending) { // Filter per featured articles.
+    let sortObject = {};
+    const stype = 'updated';
+    const sdir = -1;
+    sortObject[stype] = sdir;
+
+    // Filter last articles by category.
+    if (query.category) {
+      const countCategories = query.category.split("/");
+      if (countCategories.length === 2) {
+        filter = {"category.initial": { "$regex": query.category , "$options": "i" }}
+      } else {
+        filter = {"category.initial": query.category }
+      }
+    }
+
+    // Filter articles if are featured.
+    if(query.trending) {
       filter = {
         $and: [
           { "featured": true },
-          { _id: {$ne: filters.idOffset} },
+          { _id: {$ne: query.idOffset} },
          ]
       };
     }
-    if (filters.search) { // Search.
-      filter = {"title": { "$regex": filters.search , "$options": "i" }};
+
+    // Get articles more view.
+    if(query.mostView) {
+      delete sortObject.updated;
+      sortObject.counter = -1;
+    }
+
+    // Search articles by string.
+    if (query.search) {
+      filter = {"title": { "$regex": query.search , "$options": "i" }};
     }
     
+    console.log(sortObject);
     return new Promise((resolve, reject) => Article.find(filter)
-    .skip(page * limit).limit(limit).exec((err, docs) => {
+    .skip(query.page * query.limit).limit(query.limit).sort(sortObject).exec((err, docs) => {
         if (err) return reject(err);
         return resolve(docs);
       }));
