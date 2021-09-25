@@ -1,7 +1,5 @@
 //const admin = require('firebase-admin');
 //const serviceAccount = require("../../../serviceAccountKey.json");
-const redis = require("redis");
-const clientRedis = redis.createClient({ host: 'redis' });
 const dto = require('./dto');
 const action = require('./actions');
 
@@ -36,24 +34,6 @@ async function Articles(req, res) {
 
   const articles = await action.getArticles(query);
   return res.send(dto.multipleTeaser(articles));
-
-  /*
-  const articles = await clientRedis.get('articles', async (err, data) => {
-    if (err) throw err;
-
-    if (data) {
-      res.status(200).send(JSON.parse(data));
-    } else {
-      const data = await db.collection('articles').get();
-      const articles = [];
-      data.docs.forEach(item => {
-        articles.push({...item.data(), id: item.id});
-      })
-
-      await clientRedis.setex('articles', 15, JSON.stringify(articles));
-      res.status(200).send(articles);
-    }
-  });*/
 }
 
 async function ArticlesRelated(req, res) {

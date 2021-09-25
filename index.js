@@ -1,3 +1,4 @@
+const serverless = require('serverless-http');
 const express = require('express');
 const os = require('os')
 require('dotenv').config();
@@ -63,4 +64,5 @@ app.use(middleware.errorHandler)
 app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')}`)
 })
-// module.exports.handler = serverless(app);
+
+//module.exports.handler = serverless(app);

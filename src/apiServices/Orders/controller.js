@@ -1,5 +1,3 @@
-const redis = require('redis');
-const clientRedis = redis.createClient({host: 'redis'});
 const dto = require('./dto'); 
 const action = require('./actions');
 
