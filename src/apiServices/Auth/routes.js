@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const authorize = require('../../utils/authorize');
+const role = require('../../utils/role');
 const controller = require('./controller');
 
 router.post('/login', controller.login);     // public route
-router.post('/register', authorize(['admin']), controller.register);     // public route
+router.post('/register', authorize([role.admin]), controller.register);
 //router.post('/access', controller.accessSocial);     // public route
 //router.get('/:id', authorize(), userController.getById);       // all authenticated users
 

@@ -21,7 +21,7 @@ async function login(req, res, next) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     };
-    return res.json(userData);
+    return res.status(200).json(userData);
   } else {
     return res.status(401).json({
       message: "Email o password incorrectos."
@@ -37,7 +37,7 @@ async function register(req, res) {
   });
 
   if (checkUser) {
-    return res.status(400).json({ message: 'Ya estas registrado con este email, intenta ingresar.' });
+    return res.status(400).json({ message: 'Ya estas registrado con este email.' });
   }
 
   try {
@@ -46,6 +46,7 @@ async function register(req, res) {
       password,
       firstName,
       lastName,
+      role: 'admin'
     }).save();
 
     // Response for login.
@@ -56,7 +57,9 @@ async function register(req, res) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     };
-    return res.json(userData);
+
+    return res.status(201).json(userData);
+    // return res.json(userData);
   } catch (err) {
     return res.status(500).send({
       message: err.message
