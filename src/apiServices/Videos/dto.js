@@ -3,7 +3,8 @@ const single = (resource) => ({
     type: resource.type,
     created: resource.created,
     category: resource.category,
-    
+    content: resource.content,
+    mimetype: resource.mimetype
 });
 
 const multiple = (resources) => resources.map((resource) => single(resource));

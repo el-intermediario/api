@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const coverSchema = new Schema({
     created: {
         type: Number,
-        default: Date.now(), 
+        default: parseInt(Date.now()/1000), 
     },
     featured: {
         type: Boolean, 

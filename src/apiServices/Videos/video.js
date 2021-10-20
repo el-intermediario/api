@@ -2,24 +2,36 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const videoSchema = new Schema({
-    title: {
-        type: String, 
-        default: null,
-    }, 
-    type: {
-        type: String, 
-        enum: ['url', 'embed'],
-        require: true,
-    },
-    created: {
-        type: Date,
-        default: Date.now,
-    },
-    category: {
-        type: String, 
-        default: null,
-    }, 
+  title: {
+    type: String,
+    default: null,
+  },
+  type: {
+    type: String,
+    enum: ['url', 'embed'],
+    require: true,
+  },
+  created: {
+    type: Number,
+    default: parseInt(Date.now()/1000),
+  },
+  category: {
+    type: String,
+    default: null,
+  },
+  content: {
+    type: String,
+    default: null
+  },
+  mimetype: {
+    type: String,
+    default: null
+  },
+  thumbnail: {
+    type: String,
+    default: null
+  }
 });
 
 const video = mongoose.model('Video', videoSchema);
-module.exports = video; 
+module.exports = video;

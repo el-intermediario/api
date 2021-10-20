@@ -161,7 +161,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/intermediario/dev/1632493364556-2021-09-24T14:22:44.556Z/intermediario.zip"
+          "S3Key": "serverless/intermediario/dev/1634702582230-2021-10-20T04:03:02.230Z/intermediario.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",
@@ -179,14 +179,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersionaWpL8HVSbaLujPKKjfCSjLnaIKwhlVf1LZBZbAhe0": {
+    "ApiLambdaVersion91WZnkguTkWuLwZB8jANyrd6HRVlFEEh0fiCYH7WY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "SYVMum4DiDEgf9PXlCnCpjtJlCjpJiDfJ7rvuXdqIAA="
+        "CodeSha256": "7bIdIZfg4wUMGtzwaIqPjDK8NHtZLJPiD0//NAyNFFk="
       }
     },
     "ApiGatewayRestApi": {
@@ -311,7 +311,7 @@
         "ApiLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1632493357770": {
+    "ApiGatewayDeployment1634702573637": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -374,7 +374,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersionaWpL8HVSbaLujPKKjfCSjLnaIKwhlVf1LZBZbAhe0"
+        "Ref": "ApiLambdaVersion91WZnkguTkWuLwZB8jANyrd6HRVlFEEh0fiCYH7WY"
       },
       "Export": {
         "Name": "sls-intermediario-dev-ApiLambdaFunctionQualifiedArn"

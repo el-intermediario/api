@@ -1,6 +1,8 @@
 const express = require('express');
 const { upload } = require("../utils/multer");
+const { uploadVideo } = require("../utils/multerVideo");
 const uploadController = require("../apiServices/Upload/controller");
+const controllerVideo = require("../apiServices/Upload/controllerVideo");
 
 // Routes.
 const authRouter = require('../apiServices/Auth/routes');
@@ -35,5 +37,6 @@ router.use('/customers', customersRouter);
 router.use('/pages', pagesRouter); 
 
 router.post("/upload", upload, uploadController.uploadFile);
+router.post("/upload-video", uploadVideo, controllerVideo.uploadFile);
 
 module.exports = router;

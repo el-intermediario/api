@@ -51,6 +51,10 @@ const articleSchema = new Schema({
     type: String,
     default: null,
   },
+  imageTeaser: {
+    type: String,
+    default: null,
+  },
   related: {
     type: Array,
   },
@@ -75,8 +79,8 @@ const articleSchema = new Schema({
     type: Number,
     default: 0, 
   },
-  created: {type: Number, default: Date.now()},
-  updated: {type: Number, default: Date.now()},
+  created: {type: Number, default: parseInt(Date.now()/1000)},
+  updated: {type: Number, default: parseInt(Date.now()/1000)},
 });
 
 const model = mongoose.model("Article", articleSchema);
