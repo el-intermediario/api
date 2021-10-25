@@ -16,9 +16,9 @@ module.exports = {
     },
 
     async getVideos() {
-        return new Promise((resolve, reject) => Video.find({}, (err, docs) => {
+        return new Promise((resolve, reject) => Video.find().sort({created: -1}).exec((err, docs) => {
             if (err) return reject(err);
-            return resolve(docs); 
-        }));
+            return resolve(docs);
+          }));
     },
 }

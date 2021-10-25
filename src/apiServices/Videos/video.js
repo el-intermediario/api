@@ -30,6 +30,10 @@ const videoSchema = new Schema({
   thumbnail: {
     type: String,
     default: null
+  },
+  inHome: {
+    type: Boolean,
+    default: true
   }
 });
 

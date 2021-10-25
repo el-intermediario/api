@@ -4,7 +4,8 @@ const single = (resource) => ({
     created: resource.created,
     category: resource.category,
     content: resource.content,
-    mimetype: resource.mimetype
+    mimetype: resource.mimetype,
+    thumbnail: resource.thumbnail
 });
 
 const multiple = (resources) => resources.map((resource) => single(resource));
