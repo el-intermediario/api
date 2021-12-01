@@ -61,7 +61,6 @@ app.use(express.static('public'));
 app.use(middleware.errorHandler)
 // app.use(errorHandler);
 
-
 app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')}`)
 })
