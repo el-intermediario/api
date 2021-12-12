@@ -1,5 +1,6 @@
 const single = (resource) => ({
     id: resource._id,
+    idShort: resource.idShort,
     title: resource.title,
     body: resource.body,
     image: resource.image,
@@ -19,6 +20,7 @@ const single = (resource) => ({
 
   const teaser = (resource) => ({
     id: resource._id,
+    idShort: resource.idShort,
     title: resource.title,
     image: resource.image,
     copete: resource.copete,

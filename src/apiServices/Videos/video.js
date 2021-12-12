@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-sequence')(mongoose);
 const { Schema } = mongoose;
 
+
 const videoSchema = new Schema({
+  _id: Number,
   title: {
     type: String,
     default: null,
@@ -35,7 +38,11 @@ const videoSchema = new Schema({
     type: Boolean,
     default: true
   }
+}, {
+  _id: false
 });
+
+videoSchema.plugin(autoIncrement, {id: 'video', inc_field: '_id'});
 
 const video = mongoose.model('Video', videoSchema);
 module.exports = video;

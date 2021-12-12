@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-sequence')(mongoose);
 const { Schema } = mongoose;
 const slug = require('mongoose-slug-generator');
 mongoose.plugin(slug);
 
+
 //We define scheme for article
 const articleSchema = new Schema({
+  idShort: Number,
   userId: {
     type: Schema.ObjectId,
     ref: "User",
@@ -22,10 +25,6 @@ const articleSchema = new Schema({
   category: {
     type: Object,
     default: null
-  },
-  date: {
-    type: Number,
-    default: Date.now,
   },
   source: {
     type: String,
@@ -79,9 +78,11 @@ const articleSchema = new Schema({
     type: Number,
     default: 0, 
   },
-  created: {type: Number, default: parseInt(Date.now()/1000)},
-  updated: {type: Number, default: parseInt(Date.now()/1000)},
+  created: {type: Number},
+  updated: {type: Number},
 });
+
+articleSchema.plugin(autoIncrement, {id: 'article', inc_field: 'idShort'});
 
 const model = mongoose.model("Article", articleSchema);
 module.exports = model;
