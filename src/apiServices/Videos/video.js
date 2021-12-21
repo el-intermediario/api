@@ -4,14 +4,14 @@ const { Schema } = mongoose;
 
 
 const videoSchema = new Schema({
-  _id: Number,
+  idShort: Number,
   title: {
     type: String,
     default: null,
   },
   type: {
     type: String,
-    enum: ['url', 'embed'],
+    enum: ['custom', 'vimeo', 'youtube'],
     require: true,
   },
   created: {
@@ -38,11 +38,9 @@ const videoSchema = new Schema({
     type: Boolean,
     default: true
   }
-}, {
-  _id: false
 });
 
-videoSchema.plugin(autoIncrement, {id: 'video', inc_field: '_id'});
+videoSchema.plugin(autoIncrement, {id: 'video', inc_field: 'idShort'});
 
 const video = mongoose.model('Video', videoSchema);
 module.exports = video;

@@ -15,8 +15,8 @@ module.exports = {
         }));
     },
 
-    async getVideos() {
-        return new Promise((resolve, reject) => Video.find().sort({created: -1}).exec((err, docs) => {
+    async getVideosInHome() {
+        return new Promise((resolve, reject) => Video.find({inHome: true}).sort({idShort: -1}).exec((err, docs) => {
             if (err) return reject(err);
             return resolve(docs);
           }));
