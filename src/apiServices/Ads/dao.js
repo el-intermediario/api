@@ -8,8 +8,8 @@ module.exports = {
         }));
     },
 
-    async get(path) {
-        return new Promise((resolve, reject) => Ad.findOne({slug: path}, (err, docs) => {
+    async get(iShort) {
+        return new Promise((resolve, reject) => Ad.findOne({iShort}, (err, docs) => {
             if (err) return reject(err);
             return resolve(docs); 
         }));

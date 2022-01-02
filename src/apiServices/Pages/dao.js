@@ -8,8 +8,8 @@ module.exports = {
         }));
     },
     
-    async get(path) {
-        return new Promise((resolve, reject) => Page.findOne({slug: path}, (err, docs) => {
+    async get(slug) {
+        return new Promise((resolve, reject) => Page.findOne({slug}, (err, docs) => {
             if(err) return reject(err);
             return resolve(docs); 
         }));

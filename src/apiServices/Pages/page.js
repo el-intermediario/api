@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -12,19 +11,16 @@ const pageSchema = new Schema({
     default: null,
   },
   created: {
-    type: Date,
-    default: Date.now,
+    type: Number,
   },
   status: {
     type: Boolean,
+    default: true
+  },
+  inMenu: {
+    type: Boolean,
     default: false
-  },
-  keywords: {
-    type: Array,
-    default: [],
-  },
-
-
+  }
 });
 
 const page = mongoose.model("Page", pageSchema);

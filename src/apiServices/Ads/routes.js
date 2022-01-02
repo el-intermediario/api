@@ -4,7 +4,7 @@ const controller = require('./controller');
 
 
 router.get('/', controller.getAds);
-router.get('/:path', controller.get);
+router.get('/:idShort', controller.get);
 router.post('/', controller.post);
 
 module.exports = router;

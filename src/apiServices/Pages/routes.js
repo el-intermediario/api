@@ -4,7 +4,7 @@ const controller = require('./controller');
 
 
 router.get('/', controller.getPages);
-router.get('/:path', controller.get);
+router.get('/:slug', controller.get);
 router.post('/', controller.post);
 
 module.exports = router;

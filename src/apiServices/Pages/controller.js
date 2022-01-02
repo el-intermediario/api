@@ -7,12 +7,12 @@ async function post(req, res) {
 }
 
 async function get(req, res) {
-    const page = await action.get(req.params.path);
+    const page = await action.get(req.params.slug);
     return res.send(dto.single(page));
 }
 
 async function getPages(req, res) {
-    const page = await action.get(req.params.path);
+    const page = await action.get(req.params.slug);
     return res.send(dto.multiple(page));
 }
 

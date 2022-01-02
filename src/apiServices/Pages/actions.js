@@ -4,7 +4,7 @@ module.exports = {
   async post(page) {
     return dao.post(page);
   },
-  async get(path) {
-    return dao.get(path);
+  async get(slug) {
+    return dao.get(slug);
   },
 }

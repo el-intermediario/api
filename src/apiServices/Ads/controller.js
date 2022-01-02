@@ -7,7 +7,7 @@ async function post(req, res) {
 }
 
 async function get(req, res) {
-    const ad = await action.get(req.params.path);
+    const ad = await action.get(req.params.idShort);
     return res.send(dto.single(ad));
 }
 
