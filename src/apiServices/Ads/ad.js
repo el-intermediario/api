@@ -25,15 +25,16 @@ const adSchema = new Schema({
   },
   dateStart: {
     type: Number, 
-    default: (Date.now/1000),
+    default: parseInt(Date.now()/1000),
   },
   dateEnd: {
     type: Number,
-    default: (Date.now/1000),
+    default: parseInt(Date.now()/1000),
   },
   position: {
     type: String, 
     enum: ["header","urgent","modal","main", "main2", "main3", "sidebar"],
+    default: 'main'
   },
   section: {
     type: String, 
@@ -41,7 +42,7 @@ const adSchema = new Schema({
   },
   size: {
     type: String, 
-    enum: ["810x100","390x312","1080x840","350x250"],
+    enum: ["810x100","390x312","1080x840","350x250", "970x250"],
   },
   status: { 
     type: Boolean, 
