@@ -9,6 +9,10 @@ const adSchema = new Schema({
     type: String,
     default: null,
   },
+  url: {
+    type: String,
+    default: null,
+  },
   type: {
     type: String, 
     enum: ['normal', 'basic', 'premium', 'featured'],
