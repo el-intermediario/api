@@ -1,4 +1,3 @@
-const serverless = require('serverless-http');
 const express = require('express');
 const os = require('os')
 require('dotenv').config();
