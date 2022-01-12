@@ -19,7 +19,7 @@ app.use(middleware.requestHandler)
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 
 // Connect Mongodb.
 const connectDB = async () => {
