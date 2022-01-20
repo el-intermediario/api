@@ -3,8 +3,8 @@ const MulterAzureStorage = require('multer-azure-blob-storage').MulterAzureStora
 
 const resolveBlobName = (req, file) => {
   return new Promise((resolve, reject) => {
-      console.log(file.originalname);
-      const blobName = file.originalname; //yourCustomLogic(req, file);
+      console.log(req);
+      const blobName = 'dev/articles/' + file.originalname; //yourCustomLogic(req, file);
       resolve(blobName);
   });
 };
@@ -36,9 +36,9 @@ const azureStorage = new MulterAzureStorage({
   urlExpirationTime: 60
 });
 
-const uploadAzure = multer({
+const uploadImage = multer({
   storage: azureStorage
 }).single('file');
 
 
-module.exports = { uploadAzure };
+module.exports = { uploadImage };
