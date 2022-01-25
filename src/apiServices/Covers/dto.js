@@ -1,9 +1,10 @@
 const single = (resource) => ({
+  id: resource._id,
   created: resource.created,
-  featured: resource.featured,
   title: resource.title,
   layout: resource.layout,
-  status: resource.status
+  status: resource.status,
+  articlesOffset: resource.articlesOffset,
 });
 
 const multiple = (resources) => resources.map((resource) => single(resource));

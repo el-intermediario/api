@@ -46,7 +46,7 @@ const adSchema = new Schema({
   },
   size: {
     type: String, 
-    enum: ["810x100","390x312","1080x840","350x250", "970x250"],
+    enum: ["portada_superior","810x100","390x312","1080x840","350x250", "970x250"],
   },
   status: { 
     type: Boolean, 

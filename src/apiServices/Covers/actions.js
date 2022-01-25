@@ -4,7 +4,10 @@ module.exports = {
   async post(cover) {
     return dao.post(cover);
   },
-  async get() {
-    return dao.get();
+  async get(query) {
+    return dao.get(query);
+  },
+  async put(id, body) {
+    return dao.put(id, body);
   },
 }

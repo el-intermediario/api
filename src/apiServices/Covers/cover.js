@@ -18,6 +18,10 @@ const coverSchema = new Schema({
         type: Array,
         default: [],
     },
+    articlesOffset: { 
+        type: Array,
+        default: []
+    },
     status: { 
         type: Boolean, 
         default: false,

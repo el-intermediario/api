@@ -7,7 +7,7 @@ module.exports = {
   async get(path) {
     return dao.get(path);
   },
-  async getAds() {
-    return dao.getAds();
+  async getAds(query) {
+    return dao.getAds(query);
   }, 
 }

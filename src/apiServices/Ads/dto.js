@@ -10,6 +10,7 @@ const single = (resource) => ({
     size: resource.size,
     section: resource.section,
     position: resource.position,
+    url: resource.url,
 });
 
 const multiple = (resources) => resources.map(resource => single(resource));

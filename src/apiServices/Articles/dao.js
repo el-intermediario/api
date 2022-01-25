@@ -57,9 +57,14 @@ module.exports = {
       filter = {
         $and: [
           { "featured": true },
-          { _id: {$ne: query.idOffset} },
+          { _id: {$ne: query.idOffset} }, // not equal
          ]
       };
+    }
+
+    // Filter articles with offset.
+    if(query.offset) {
+      filter = { idShort: {$nin: query.offset.split(',')}}; // not in array
     }
 
     // Get articles more view.
@@ -73,7 +78,6 @@ module.exports = {
       filter = {"title": { "$regex": query.search , "$options": "i" }};
     }
     
-    console.log(sortObject);
     return new Promise((resolve, reject) => Article.find(filter)
     .skip(query.page * query.limit).limit(query.limit).sort(sortObject).exec((err, docs) => {
         if (err) return reject(err);
