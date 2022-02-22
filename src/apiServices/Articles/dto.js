@@ -3,6 +3,7 @@ const single = (resource) => ({
     idShort: resource.idShort,
     title: resource.title,
     body: resource.body,
+    bodyData: resource.bodyData,
     image: resource.image,
     copete: resource.copete,
     dropline: resource.dropline,

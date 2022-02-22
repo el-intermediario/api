@@ -22,6 +22,10 @@ const articleSchema = new Schema({
     default: null,
     required: true
   },
+  bodyData: {
+    type: String,
+    default: ''
+  },
   category: {
     type: Object,
     default: null
