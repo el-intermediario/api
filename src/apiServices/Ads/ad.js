@@ -1,4 +1,3 @@
-//file path caller
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-sequence')(mongoose);
 const { Schema } = mongoose;
@@ -35,14 +34,8 @@ const adSchema = new Schema({
     type: Number,
     default: parseInt(Date.now()/1000),
   },
-  position: {
-    type: String, 
-    enum: ["header","urgent","modal","main", "main2", "main3", "sidebar"],
-    default: 'main'
-  },
-  section: {
-    type: String, 
-    enum: ["home","deportes","interes_general","politica"],
+  categories: {
+    type: Array,
   },
   size: {
     type: String, 

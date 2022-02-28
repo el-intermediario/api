@@ -8,8 +8,7 @@ const single = (resource) => ({
     dateStart: resource.dateStart,
     dateEnd: resource.dateEnd,
     size: resource.size,
-    section: resource.section,
-    position: resource.position,
+    categories: resource.categories,
     url: resource.url,
 });
 

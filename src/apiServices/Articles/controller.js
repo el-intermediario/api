@@ -24,6 +24,7 @@ async function put(req, res) {
 
 async function get(req, res) {
   const article = await action.get(req.params.id, req.query.by);
+  res.set('Cache-Control', 'public, max-age=300, s-maxage=300');
   return res.send(dto.single(article));
 };
 
@@ -33,6 +34,7 @@ async function Articles(req, res) {
   const query = {...req.query, page, limit};
 
   const articles = await action.getArticles(query);
+  res.set('Cache-Control', 'public, max-age=120, s-maxage=120');
   return res.send(dto.multipleTeaser(articles));
 }
 
