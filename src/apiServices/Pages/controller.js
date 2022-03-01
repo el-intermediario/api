@@ -2,22 +2,23 @@ const dto = require('./dto');
 const action = require('./actions');
 
 async function post(req, res) {
-    const page = await action.post(req.body);
-    return res.send(dto.single(page));
+  const page = await action.post(req.body);
+  return res.send(dto.single(page));
 }
 
 async function get(req, res) {
-    const page = await action.get(req.params.slug);
-    return res.send(dto.single(page));
+  console.log(req.params.slug);
+  const page = await action.get(req.params.slug);
+  return res.send(dto.single(page));
 }
 
 async function getPages(req, res) {
-    const page = await action.get(req.params.slug);
-    return res.send(dto.multiple(page));
+  const page = await action.get(req.params.slug);
+  return res.send(dto.multiple(page));
 }
 
 module.exports = {
-    get,
-    post,
-    getPages,
+  get,
+  post,
+  getPages,
 }

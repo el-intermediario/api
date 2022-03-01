@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-sequence')(mongoose);
 const { Schema } = mongoose;
+const autoIncrement = require('mongoose-sequence')(mongoose);
 const slug = require('mongoose-slug-generator');
 mongoose.plugin(slug);
 

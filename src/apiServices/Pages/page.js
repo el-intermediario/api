@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const autoIncrement = require('mongoose-sequence')(mongoose);
+const slug = require('mongoose-slug-generator');
+mongoose.plugin(slug);
 
 const pageSchema = new Schema({
+  idShort: Number,
   title: {
     type: String,
     default: null,
@@ -10,18 +14,21 @@ const pageSchema = new Schema({
     type: String,
     default: null,
   },
-  created: {
-    type: Number,
+  bodyHtml: {
+    type: String,
+    default: null
   },
   status: {
     type: Boolean,
     default: true
   },
-  inMenu: {
-    type: Boolean,
-    default: false
+  slug: { 
+    type: String, 
+    slug: "title" 
   }
 });
+
+pageSchema.plugin(autoIncrement, {id: 'page', inc_field: 'idShort'});
 
 const page = mongoose.model("Page", pageSchema);
 module.exports = page;
