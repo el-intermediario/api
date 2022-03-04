@@ -7,7 +7,7 @@ module.exports = {
 async get(path) {
     return dao.get(path);
 },
-async getVideosInHome() {
-    return dao.getVideosInHome();
+async getVideosInHome(query) {
+    return dao.getVideosInHome(query);
 },
 }

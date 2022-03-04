@@ -12,7 +12,7 @@ async function get(req, res) {
 }
 
 async function getVideosInHome(req, res) {
-  const video = await action.getVideosInHome();
+  const video = await action.getVideosInHome(req.query);
   return res.send(dto.multiple(video));
 }
 

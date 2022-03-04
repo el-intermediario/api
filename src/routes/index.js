@@ -1,6 +1,7 @@
 const express = require('express');
-const { upload } = require("../utils/multer");
-const { uploadVideo } = require("../utils/multerVideo");
+// const { upload } = require("../utils/multer");
+const { uploadAzure } = require("../utils/uploadAzure");
+// const { uploadVideo } = require("../utils/multerVideo");
 const uploadController = require("../apiServices/Upload/controller");
 const controllerVideo = require("../apiServices/Upload/controllerVideo");
 
@@ -36,7 +37,8 @@ router.use('/cards', cardsRouter);
 router.use('/customers', customersRouter);
 router.use('/pages', pagesRouter); 
 
-router.post("/upload", upload, uploadController.uploadFile);
-router.post("/upload-video", uploadVideo, controllerVideo.uploadFile);
+// router.post("/upload", upload, uploadController.uploadFile);
+router.post("/upload", uploadAzure, uploadController.uploadAzureFile);
+router.post("/upload-video", uploadAzure, uploadController.uploadAzureFile);
 
 module.exports = router;
