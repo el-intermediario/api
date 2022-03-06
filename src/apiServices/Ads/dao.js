@@ -16,10 +16,21 @@ module.exports = {
   },
 
   async getAds(query) {
-    let filters = {};
+    let filters = {
+      '$and': []
+    };
+
+    if(query.category.length) {
+      filters['$and'].push({categories: query.category});
+    }
+
+    if(query.sizes.length) {
+      filters['$and'].push({ size: {$in: query.sizes.split(',')}});
+    }
+    /*
     if(query.sizes) {
       filters = { size: {$in: query.sizes.split(',')}}; // not in array
-    }
+    }*/
 
     return new Promise((resolve, reject) => Ad.find(filters, (err, docs) => {
       if (err) return reject(err);
