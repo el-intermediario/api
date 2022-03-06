@@ -20,7 +20,6 @@ const articleSchema = new Schema({
   body: {
     type: String,
     default: null,
-    required: true
   },
   bodyData: {
     type: String,
