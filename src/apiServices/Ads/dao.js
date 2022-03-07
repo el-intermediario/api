@@ -20,11 +20,11 @@ module.exports = {
       '$and': []
     };
 
-    if(query.category.length) {
+    if(query.category) {
       filters['$and'].push({categories: query.category});
     }
 
-    if(query.sizes.length) {
+    if(query.sizes) {
       filters['$and'].push({ size: {$in: query.sizes.split(',')}});
     }
     /*

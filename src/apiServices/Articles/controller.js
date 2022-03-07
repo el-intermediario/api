@@ -34,7 +34,7 @@ async function Articles(req, res) {
   const query = {...req.query, page, limit};
 
   const articles = await action.getArticles(query);
-  res.set('Cache-Control', 'public, max-age=120, s-maxage=120');
+  // res.set('Cache-Control', 'public, max-age=120, s-maxage=120');
   return res.send(dto.multipleTeaser(articles));
 }
 

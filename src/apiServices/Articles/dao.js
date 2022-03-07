@@ -36,7 +36,10 @@ module.exports = {
   },
 
   async getArticles(query) {
-    let filter = {};
+    let filters = {
+      '$and': []
+    };
+
     let sortObject = {};
     const stype = 'updated';
     const sdir = -1;
@@ -44,41 +47,41 @@ module.exports = {
 
     // Filter last articles by category.
     if (query.category) {
+      filters['$and'].push({"category.initial": { "$regex": query.category , "$options": "i" }});
+      /*
       const countCategories = query.category.split("/");
       if (countCategories.length === 2) {
-        filter = {"category.initial": { "$regex": query.category , "$options": "i" }}
+        filters['$and'].push({"category.initial": { "$regex": query.category , "$options": "i" }})
       } else {
-        filter = {"category.initial": query.category }
-      }
+        console.log(query.category);
+        filters['$and'].push({"category.initial": query.category });
+      }*/
     }
 
     // Filter articles if are featured.
     if(query.trending) {
-      filter = {
-        $and: [
-          { "featured": true },
-          { _id: {$ne: query.idOffset} }, // not equal
-         ]
-      };
+      filters['$and'].push({ "featured": true });
+      filters['$and'].push({ _id: {$ne: query.idOffset} });
     }
 
     // Filter articles with offset.
     if(query.offset) {
-      filter = { idShort: {$nin: query.offset.split(',')}}; // not in array
+      filters['$and'].push({ idShort: {$nin: query.offset.split(',')}}); // not in array.
     }
 
     // Get articles more view.
     if(query.mostView) {
+      filters['$and'].push({});
       delete sortObject.updated;
       sortObject.counter = -1;
     }
 
     // Search articles by string.
     if (query.search) {
-      filter = {"title": { "$regex": query.search , "$options": "i" }};
+      filters['$and'].push({"title": { "$regex": query.search , "$options": "i" }});
     }
     
-    return new Promise((resolve, reject) => Article.find(filter)
+    return new Promise((resolve, reject) => Article.find(filters)
     .skip(query.page * query.limit).limit(query.limit).sort(sortObject).exec((err, docs) => {
         if (err) return reject(err);
         return resolve(docs);
