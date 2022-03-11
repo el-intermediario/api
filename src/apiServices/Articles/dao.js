@@ -80,6 +80,10 @@ module.exports = {
     if (query.search) {
       filters['$and'].push({"title": { "$regex": query.search , "$options": "i" }});
     }
+
+    if (filters['$and'].length === 0) {
+      filters['$and'].push({});
+    }
     
     return new Promise((resolve, reject) => Article.find(filters)
     .skip(query.page * query.limit).limit(query.limit).sort(sortObject).exec((err, docs) => {
