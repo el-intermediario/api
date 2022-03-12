@@ -2,6 +2,8 @@
 //const serviceAccount = require("../../../serviceAccountKey.json");
 const dto = require('./dto');
 const action = require('./actions');
+const NodeCache = require("node-cache");
+const myCache = new NodeCache({stdTTL: 60});
 
 /*
 admin.initializeApp({
@@ -23,9 +25,13 @@ async function put(req, res) {
 };
 
 async function get(req, res) {
-  const article = await action.get(req.params.id, req.query.by);
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=300');
-  return res.send(dto.single(article));
+  if(myCache.has(`article_${req.params.id}`)) {
+    return res.send(myCache.get(`article_${req.params.id}`));
+  } else {
+    const article = await action.get(req.params.id, req.query.by);
+    myCache.set(`article_${req.params.id}`, article);
+    return res.send(dto.single(article));
+  }
 };
 
 async function Articles(req, res) {
@@ -34,7 +40,6 @@ async function Articles(req, res) {
   const query = {...req.query, page, limit};
 
   const articles = await action.getArticles(query);
-  // res.set('Cache-Control', 'public, max-age=120, s-maxage=120');
   return res.send(dto.multipleTeaser(articles));
 }
 

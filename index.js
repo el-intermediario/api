@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const os = require('os')
 require('dotenv').config();
 const routes = require('./src/routes');
 const mongoose = require('mongoose');
@@ -14,6 +13,7 @@ Bugsnag.start({
   apiKey: "c5ffac591efb8e596f2860b09fd81658",
   plugins: [BugsnagPluginExpress]
 });
+const NodeCache = require("node-cache");
 const middleware = Bugsnag.getPlugin('express');
 app.use(middleware.requestHandler)
 
@@ -40,7 +40,7 @@ connectDB();
 app.get('/', (request, response) => {
   try {
     // response.set('Cache-Control', 'public, max-age=20, s-maxage=15')
-    response.send(`Test server ${os.hostname()} - ${parseInt(Date.now()/1000)}`);
+    response.send(`Test server - ${parseInt(Date.now()/1000)}`);
   } catch (err) {
     throw new Error('Error at load server.');
   }
