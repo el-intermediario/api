@@ -1,9 +1,10 @@
 const dto = require('./dto');
 const action = require('./actions');
 const NodeCache = require("node-cache");
-const myCache = new NodeCache({stdTTL: 60});
+const myCache = new NodeCache({stdTTL: 360});
 
 async function post(req, res) {
+  myCache.del('ads');
   const ad = await action.post(req.body);
   return res.send(dto.single(ad));
 }
