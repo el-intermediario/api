@@ -58,6 +58,11 @@ module.exports = {
       }*/
     }
 
+    if (query.tags) {
+      const tags = query.tags.split(',');
+      filters['$and'].push({ "tags.name": {$in: tags} });
+    }
+
     // Filter articles if are featured.
     if(query.trending) {
       filters['$and'].push({ "featured": true });
