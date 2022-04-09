@@ -1,6 +1,10 @@
 const express = require('express');
+const fs = require('fs');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const upload = require('./src/utils/cloudinaryMulter');
+const cloudinary = require('./src/utils/cloudinary');
+
 const routes = require('./src/routes');
 const mongoose = require('mongoose');
 const errorHandler = require('./src/utils/error-handler');
@@ -49,6 +53,32 @@ app.get('/', (request, response) => {
 app.get('/privacy-policy', (request, response) => {
     //response.set('Cache-Control', 'public, max-age=6000, s-maxage=6000');
     response.send(`Politicas de privacidad.`);
+});
+
+app.use('/upload-images', upload.array('image'), async (req, res) => {
+
+  const uploader = async (path) => await cloudinary.uploads(path, req.body.folder);
+
+  if (req.method === 'POST') {
+    const urls = []
+    const files = req.files;
+    for (const file of files) {
+      const { path } = file;
+      const newPath = await uploader(path)
+      urls.push(newPath)
+      fs.unlinkSync(path)
+    }
+
+    res.status(200).json({
+      message: 'images uploaded successfully',
+      data: urls
+    })
+
+  } else {
+    res.status(405).json({
+      err: `${req.method} method not allowed`
+    })
+  }
 });
 
 // Routing.
