@@ -19,7 +19,7 @@ const adSchema = new Schema({
     default: "normal", 
   },
   image: {
-    type: String,
+    type: Object,
     default: null,
   },
   video: {
