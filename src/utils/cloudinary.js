@@ -13,13 +13,11 @@ exports.uploads = (file, folder) => {
   return new Promise(resolve => {
     cloudinary.uploader.upload(file, (result) => {
       resolve({
-        url: result.url,
-        id: result.public_id,
-        format: result.format,
+        url: `${result.version}/${result.public_id}.${result.format}`,
         width: result.width,
         height: result.height,
         assetId: result.asset_id,
-        resourceType: result.resource_type
+        type: result.resource_type,
       })
     }, {
       resource_type: "auto",

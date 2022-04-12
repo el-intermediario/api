@@ -50,11 +50,7 @@ const articleSchema = new Schema({
     default: null,
   },
   image: {
-    type: String,
-    default: null,
-  },
-  imageTeaser: {
-    type: String,
+    type: Object,
     default: null,
   },
   related: {
@@ -74,6 +70,10 @@ const articleSchema = new Schema({
     required: true,
   },
   tags: {
+    type: Array,
+    default: []
+  },
+  gallery: {
     type: Array,
     default: []
   },

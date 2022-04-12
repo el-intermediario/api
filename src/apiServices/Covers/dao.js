@@ -15,7 +15,7 @@ module.exports = {
       sort = { created: -1 };
     } else {
       filters = {status: true};
-      sort = {};
+      sort = { created: -1 };
     }
     return new Promise((resolve, reject) => Cover.findOne(filters).sort(sort).exec((err, docs) => {
       if (err) return reject(err);

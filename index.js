@@ -55,7 +55,7 @@ app.get('/privacy-policy', (request, response) => {
     response.send(`Politicas de privacidad.`);
 });
 
-app.use('/upload-images', upload.array('image'), async (req, res) => {
+app.use('/api/v1/upload-images', upload.array('image'), async (req, res) => {
 
   const uploader = async (path) => await cloudinary.uploads(path, req.body.folder);
 

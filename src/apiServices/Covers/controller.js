@@ -16,13 +16,16 @@ async function put(req, res) {
 };
 
 async function get(req, res) {
+  const cover = await action.get(req.query);
+  return res.send(dto.single(cover));
+  /*
   if(myCache.has('cover')) {
     return res.send(myCache.get('cover'));
   } else {
     const cover = await action.get(req.query);
     myCache.set('cover', cover);
     return res.send(dto.single(cover));
-  } 
+  } */
 };
 
 module.exports = {

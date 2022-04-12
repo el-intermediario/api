@@ -15,6 +15,7 @@ const single = (resource) => ({
     category: resource.category,
     tags: resource.tags,
     counter: resource.counter,
+    gallery: resource.gallery
   });
 
   const multiple = (resources) => resources.map(resource => single(resource));
