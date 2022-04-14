@@ -26,6 +26,13 @@ const videoSchema = new Schema({
     type: String,
     default: null
   },
+  customVideo: {
+    type: Object
+  },
+  customThumbnail: {
+    type: Object,
+    default: null
+  },
   mimetype: {
     type: String,
     default: null

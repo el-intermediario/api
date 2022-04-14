@@ -5,7 +5,9 @@ const single = (resource) => ({
     category: resource.category,
     content: resource.content,
     mimetype: resource.mimetype,
-    thumbnail: resource.thumbnail
+    thumbnail: resource.thumbnail,
+    customThumbnail: resource.customThumbnail,
+    customVideo: resource.customVideo,
 });
 
 const multiple = (resources) => resources.map((resource) => single(resource));

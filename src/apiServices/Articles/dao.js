@@ -37,7 +37,8 @@ module.exports = {
 
   async getArticles(query) {
     let filters = {
-      '$and': []
+      '$and': [],
+      '$or': []
     };
 
     let sortObject = {};
@@ -83,11 +84,17 @@ module.exports = {
 
     // Search articles by string.
     if (query.search) {
-      filters['$and'].push({"title": { "$regex": query.search , "$options": "i" }});
+      filters['$or'].push({"title": { "$regex": query.search , "$options": "i" }});
+      // tags.
+      filters['$or'].push({ "tags.name": {$eq: query.search} });
     }
 
     if (filters['$and'].length === 0) {
       filters['$and'].push({});
+    }
+
+    if (filters['$or'].length === 0) {
+      filters['$or'].push({});
     }
     
     return new Promise((resolve, reject) => Article.find(filters)
