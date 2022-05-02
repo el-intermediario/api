@@ -2,10 +2,10 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './uploads/')
+    cb(null, './uploads')
   },
   filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + '-' + file.originalname)
+    cb(null, file.originalname)
   }
 })
 
@@ -16,7 +16,7 @@ const fileFilter = (req, file, cb) => {
   } else {
     //reject file
     cb({
-      message: 'Unsupported file format'
+      message: 'Formato de archivo no soportado'
     }, false)
   }
 }

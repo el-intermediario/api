@@ -70,7 +70,7 @@ app.use('/api/v1/upload-images', upload.array('image'), async (req, res) => {
     }
 
     res.status(200).json({
-      message: 'images uploaded successfully',
+      message: 'Imagen cargada correctamente..',
       data: urls
     })
 
