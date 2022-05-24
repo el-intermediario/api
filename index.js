@@ -17,7 +17,6 @@ Bugsnag.start({
   apiKey: "c5ffac591efb8e596f2860b09fd81658",
   plugins: [BugsnagPluginExpress]
 });
-const NodeCache = require("node-cache");
 const middleware = Bugsnag.getPlugin('express');
 app.use(middleware.requestHandler)
 
@@ -76,7 +75,7 @@ app.use('/api/v1/upload-images', upload.array('image'), async (req, res) => {
 
   } else {
     res.status(405).json({
-      err: `${req.method} method not allowed`
+      err: `${req.method} metodo no permitido`
     })
   }
 });

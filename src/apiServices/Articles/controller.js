@@ -3,7 +3,7 @@
 const dto = require('./dto');
 const action = require('./actions');
 const NodeCache = require("node-cache");
-const myCache = new NodeCache({stdTTL: 4320});
+const myCache = new NodeCache({stdTTL: 100});
 
 /*
 admin.initializeApp({
