@@ -6,19 +6,24 @@ async function post(req, res) {
   return res.send(dto.single(page));
 }
 
+async function put(req, res) {
+  const page = await action.put(req.params.id, req.body);
+  return res.send(dto.single(page));
+};
+
 async function get(req, res) {
-  console.log(req.params.slug);
-  const page = await action.get(req.params.slug);
+  const page = await action.get(req.params.slug, req.query.by);
   return res.send(dto.single(page));
 }
 
 async function getPages(req, res) {
-  const page = await action.get(req.params.slug);
-  return res.send(dto.multiple(page));
+  const pages = await action.getPages();
+  return res.send(dto.multiple(pages));
 }
 
 module.exports = {
   get,
   post,
+  put,
   getPages,
 }

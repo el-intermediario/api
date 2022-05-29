@@ -25,7 +25,11 @@ const pageSchema = new Schema({
   slug: { 
     type: String, 
     slug: "title" 
-  }
+  },
+  updated: {
+    type: Number,
+    default: parseInt(Date.now()/1000)
+  },
 });
 
 pageSchema.plugin(autoIncrement, {id: 'page', inc_field: 'idShort'});

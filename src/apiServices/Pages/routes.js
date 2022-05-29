@@ -6,6 +6,7 @@ const authorize = require('../../utils/authorize');
 
 router.get('/', controller.getPages);
 router.get('/:slug', controller.get);
+router.put('/:id', authorize(['admin', 'editor']), controller.put);
 router.post('/', authorize(['admin', 'editor']), controller.post);
 
 module.exports = router;
