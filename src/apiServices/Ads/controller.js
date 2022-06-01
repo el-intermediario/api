@@ -15,6 +15,10 @@ async function get(req, res) {
 }
 
 async function getAds(req, res) {
+  const ad = await action.getAds(req.query);
+  return res.send(dto.multiple(ad));
+
+  /*
   if(myCache.has('ads')) {
     return res.send(myCache.get('ads'));
   } else {
@@ -22,6 +26,7 @@ async function getAds(req, res) {
     myCache.set('ads', ad);
     return res.send(dto.multiple(ad));
   }
+  */
 }
 
 
