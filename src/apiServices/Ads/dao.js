@@ -46,9 +46,10 @@ module.exports = {
       filters['$and'].push({});
     }
 
+    const limit = query.limit || 10;
     return new Promise((resolve, reject) => Ad.find(filters, (err, docs) => {
       if (err) return reject(err);
       return resolve(docs);
-    }));
+    }).limit(+limit));
   },
 }
