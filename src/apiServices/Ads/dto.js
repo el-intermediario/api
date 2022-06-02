@@ -10,6 +10,7 @@ const single = (resource) => ({
     size: resource.size,
     categories: resource.categories,
     url: resource.url,
+    id: resource._id,
 });
 
 const multiple = (resources) => resources.map(resource => single(resource));

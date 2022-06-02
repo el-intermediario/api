@@ -8,8 +8,18 @@ module.exports = {
     }));
   },
 
-  async get(iShort) {
-    return new Promise((resolve, reject) => Ad.findOne({ iShort }, (err, docs) => {
+  async put(id, body) {
+    const filter = { "_id": id };
+    return new Promise((resolve, reject) => Ad.findOneAndUpdate(filter, body, {
+      new: true
+    }, (err, docs) => {
+      if (err) return reject(err);
+      return resolve(docs);
+    }));
+  },
+
+  async get(id) {
+    return new Promise((resolve, reject) => Ad.findOne({'_id': id }, (err, docs) => {
       if (err) return reject(err);
       return resolve(docs);
     }));
@@ -31,6 +41,10 @@ module.exports = {
     if(query.sizes) {
       filters = { size: {$in: query.sizes.split(',')}}; // not in array
     }*/
+
+    if (filters['$and'].length === 0) {
+      filters['$and'].push({});
+    }
 
     return new Promise((resolve, reject) => Ad.find(filters, (err, docs) => {
       if (err) return reject(err);

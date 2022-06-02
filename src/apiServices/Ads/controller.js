@@ -9,6 +9,11 @@ async function post(req, res) {
   return res.send(dto.single(ad));
 }
 
+async function put(req, res) {
+  const ad = await action.put(req.params.id, req.body);
+  return res.send(dto.single(ad));
+}
+
 async function get(req, res) {
   const ad = await action.get(req.params.idShort);
   return res.send(dto.single(ad));
@@ -33,5 +38,6 @@ async function getAds(req, res) {
 module.exports = {
   get,
   post,
+  put,
   getAds,
 }
