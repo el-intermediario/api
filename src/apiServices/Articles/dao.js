@@ -21,10 +21,12 @@ module.exports = {
 
   async get(value, by) {
     // Increment counter.
-    const filter = {},
-          update = { $inc: { counter: 1 }};
-    filter[by] = value,
-    await Article.updateOne(filter, update).exec();
+    if (value && by) {
+      const filter = {},
+            update = { $inc: { counter: 1 }};
+      filter[by] = value,
+      await Article.updateOne(filter, update).exec();
+    }
 
     // Get Data.
     let query = {};
