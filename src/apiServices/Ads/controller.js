@@ -15,7 +15,7 @@ async function put(req, res) {
 }
 
 async function get(req, res) {
-  const ad = await action.get(req.params.idShort);
+  const ad = await action.get(req.params.id);
   return res.send(dto.single(ad));
 }
 
