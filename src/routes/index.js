@@ -20,6 +20,7 @@ const cardsRouter = require('../apiServices/Cards/routes');
 const customersRouter = require('../apiServices/Customers/routes');
 const pagesRouter = require('../apiServices/Pages/routes');
 const videosRouter = require('../apiServices/Videos/routes');
+const fixtureRouter = require('../apiServices/Fixtures/routes');
 
 const router = express.Router();
 router.use('/auth', authRouter);
@@ -36,6 +37,7 @@ router.use('/videos', videosRouter);
 router.use('/cards', cardsRouter);
 router.use('/customers', customersRouter);
 router.use('/pages', pagesRouter); 
+router.use('/fixtures', fixtureRouter); 
 
 // router.post("/upload", upload, uploadController.uploadFile);
 router.post("/upload", uploadAzure, uploadController.uploadAzureFile);
