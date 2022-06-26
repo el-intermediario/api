@@ -107,6 +107,7 @@ cron.schedule(process.env.CRON_TIME_DAILY, async () => {
     lastMatchs: last.results,
     nextMatchs: next.results,
     parameters: [last.parameters, next.parameters],
+    created: parseInt(+new Date()/1000)
   };
   await Fixture.create(fixture);
 });
