@@ -3,6 +3,11 @@ const action = require('./actions');
 const NodeCache = require("node-cache");
 const myCache = new NodeCache({stdTTL: 360});
 
+module.exports = {
+  get,
+  put
+}
+
 async function put(req, res) {
   myCache.del('categories');
   const category = await action.put(req.body);
@@ -17,9 +22,4 @@ async function get(req, res) {
     myCache.set('categories', category);
     return res.send(dto.single(category));
   }
-}
-
-module.exports = {
-  get,
-  put
 }
