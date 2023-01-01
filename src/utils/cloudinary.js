@@ -12,7 +12,6 @@ cloudinary.config({
 exports.uploads = (file, folder) => {
   return new Promise(resolve => {
     cloudinary.uploader.upload(file, (result) => {
-      console.log(result);
       resolve({
         url: `${result.version}/${result.public_id}.${result.format}`,
         width: result.width,
