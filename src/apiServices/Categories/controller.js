@@ -11,12 +11,10 @@ async function put(req, res) {
 
 async function get(req, res) {
   if (myCache.has(`categories`)) {
-    console.log('contenido cacheado')
     return res.send(myCache.get('categories'));
   } else {
     const category = await action.get(req.query.type);
     myCache.set('categories', category, 300);
-    console.log('contenido no cacheado')
     return res.send(dto.single(category));
   }
 }
