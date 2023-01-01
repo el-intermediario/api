@@ -13,7 +13,6 @@ async function get(req, res) {
   if (myCache.has(`categories`)) {
     return res.send(myCache.get('categories'));
   } else {
-    console.log('entro');
     const category = await action.get(req.query.type);
     myCache.set('categories', category);
     return res.send(dto.single(category));

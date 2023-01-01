@@ -31,6 +31,7 @@ app.set('port', process.env.PORT || 8080);
 // Connect Mongodb.
 const connectDB = async () => {
   try {
+    mongoose.set('strictQuery', true);
     mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}${process.env.MONGO_URL}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
