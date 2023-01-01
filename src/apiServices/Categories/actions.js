@@ -1,4 +1,3 @@
-const { getCategories } = require('./controller');
 const dao = require('./dao');
 
 module.exports = {

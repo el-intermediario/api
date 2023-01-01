@@ -7,7 +7,7 @@ const categorySchema = new Schema({
     type: String,
     default: null,
   },
-  data: { 
+  data: {
     type: Array,
     default: [],
   },

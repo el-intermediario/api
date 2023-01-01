@@ -12,7 +12,7 @@ module.exports = {
     }));
   },
   async get(type) {
-    return new Promise((resolve, reject) => Category.findOne({ 'type' : type }, (err, docs) => {
+    return new Promise((resolve, reject) => Category.findOne({ 'type': type }, (err, docs) => {
       if (err) return reject(err);
       return resolve(docs);
     }));

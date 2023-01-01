@@ -37,7 +37,7 @@ const connectDB = async () => {
     });
     console.log('DB connected!!');
   } catch (err) {
-      console.log('Failed to connect to DB', err);
+    console.log('Failed to connect to DB', err);
   }
 };
 connectDB();
@@ -46,15 +46,15 @@ connectDB();
 app.get('/', (request, response) => {
   try {
     // response.set('Cache-Control', 'public, max-age=20, s-maxage=15')
-    response.send(`Test server - ${parseInt(Date.now()/1000)}`);
+    response.send(`Test server - ${parseInt(Date.now() / 1000)}`);
   } catch (err) {
     throw new Error('Error at load server.');
   }
 });
 
 app.get('/privacy-policy', (request, response) => {
-    //response.set('Cache-Control', 'public, max-age=6000, s-maxage=6000');
-    response.send(`Politicas de privacidad.`);
+  //response.set('Cache-Control', 'public, max-age=6000, s-maxage=6000');
+  response.send(`Politicas de privacidad.`);
 });
 
 app.use('/api/v1/upload-images', upload.array('image'), async (req, res) => {
@@ -102,12 +102,12 @@ cron.schedule(process.env.CRON_TIME_DAILY, async () => {
 
   const last = await getFetchResults('last');
   const next = await getFetchResults('next');
-  
+
   const fixture = {
     lastMatchs: last.results,
     nextMatchs: next.results,
     parameters: [last.parameters, next.parameters],
-    created: parseInt(+new Date()/1000)
+    created: parseInt(+new Date() / 1000)
   };
   await Fixture.create(fixture);
 });

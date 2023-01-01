@@ -1,4 +1,3 @@
-const { getOrders } = require('./controller');
 const dao = require('./dao'); 
 
 module.exports = {

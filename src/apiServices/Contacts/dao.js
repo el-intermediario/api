@@ -1,5 +1,4 @@
 const Contact = require('./contact');
-const { getContacts } = require('./controller');
 
 module.exports = {
   async post(contact) {
@@ -16,8 +15,8 @@ module.exports = {
   },
   async getContacts() {
     return new Promise((resolve, reject) => Contact.find({}, (err, docs) => {
-        if (err) return reject(err);
-        return resolve(docs); 
+      if (err) return reject(err);
+      return resolve(docs);
     }));
   },
 }

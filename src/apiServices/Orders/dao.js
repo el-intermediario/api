@@ -1,4 +1,3 @@
-const { getOrders } = require('./actions');
 const  Order = require('./order');
 
 module.exports = {

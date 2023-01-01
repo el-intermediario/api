@@ -23,9 +23,9 @@ module.exports = {
     // Increment counter.
     if (value && by) {
       const filter = {},
-            update = { $inc: { counter: 1 }};
+        update = { $inc: { counter: 1 } };
       filter[by] = value,
-      await Article.updateOne(filter, update).exec();
+        await Article.updateOne(filter, update).exec();
     }
 
     // Get Data.
@@ -50,7 +50,7 @@ module.exports = {
 
     // Filter last articles by category.
     if (query.category) {
-      filters['$and'].push({"category.initial": { "$regex": query.category , "$options": "i" }});
+      filters['$and'].push({ "category.initial": { "$regex": query.category, "$options": "i" } });
       /*
       const countCategories = query.category.split("/");
       if (countCategories.length === 2) {
@@ -63,22 +63,22 @@ module.exports = {
 
     if (query.tags) {
       const tags = query.tags.split(',');
-      filters['$and'].push({ "tags.name": {$in: tags} });
+      filters['$and'].push({ "tags.name": { $in: tags } });
     }
 
     // Filter articles if are featured.
-    if(query.trending) {
+    if (query.trending) {
       filters['$and'].push({ "featured": true });
-      filters['$and'].push({ _id: {$ne: query.idOffset} });
+      filters['$and'].push({ _id: { $ne: query.idOffset } });
     }
 
     // Filter articles with offset.
-    if(query.offset) {
-      filters['$and'].push({ idShort: {$nin: query.offset.split(',')}}); // not in array.
+    if (query.offset) {
+      filters['$and'].push({ idShort: { $nin: query.offset.split(',') } }); // not in array.
     }
 
     // Get articles more view.
-    if(query.mostView) {
+    if (query.mostView) {
       filters['$and'].push({});
       delete sortObject.updated;
       sortObject.counter = -1;
@@ -86,9 +86,9 @@ module.exports = {
 
     // Search articles by string.
     if (query.search) {
-      filters['$or'].push({"title": { "$regex": query.search , "$options": "i" }});
+      filters['$or'].push({ "title": { "$regex": query.search, "$options": "i" } });
       // tags.
-      filters['$or'].push({ "tags.name": {$eq: query.search} });
+      filters['$or'].push({ "tags.name": { $eq: query.search } });
     }
 
     if (filters['$and'].length === 0) {
@@ -98,27 +98,27 @@ module.exports = {
     if (filters['$or'].length === 0) {
       filters['$or'].push({});
     }
-    
+
     return new Promise((resolve, reject) => Article.find(filters)
-    .skip(query.page * query.limit).limit(query.limit).sort(sortObject).exec((err, docs) => {
+      .skip(query.page * query.limit).limit(query.limit).sort(sortObject).exec((err, docs) => {
         if (err) return reject(err);
         return resolve(docs);
       }));
   },
 
-  async ArticlesRelated({page, limit, ...filters}) {
+  async ArticlesRelated({ page, limit, ...filters }) {
     let filter = {};
     if (filters.tags) { // related by tags.
       const tags = filters.tags.split(',');
       filter = {
         $and: [
-          { "tags.name": {$in: tags} },
-          { _id: {$ne: filters.offsetId} },
-         ]
+          { "tags.name": { $in: tags } },
+          { _id: { $ne: filters.offsetId } },
+        ]
       };
     }
     return new Promise((resolve, reject) => Article.find(filter)
-    .skip(page * limit).limit(limit).exec((err, docs) => {
+      .skip(page * limit).limit(limit).exec((err, docs) => {
         if (err) return reject(err);
         return resolve(docs);
       }));
