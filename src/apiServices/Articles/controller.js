@@ -30,8 +30,11 @@ async function get(req, res) {
     return res.send(myCache.get(`article_${req.params.id}`));
   } else {
     const article = await action.get(req.params.id, req.query.by);
-    myCache.set(`article_${req.params.id}`, article);
-    return res.send(dto.single(article));
+    if (article) {
+      myCache.set(`article_${req.params.id}`, article);
+      return res.send(dto.single(article));
+    }
+    return res.send({});
   }
 };
 
