@@ -1,30 +1,53 @@
-//file path caller
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-sequence')(mongoose);
 const { Schema } = mongoose;
 
 const adSchema = new Schema({
+  idShort: Number,
   name: {
     type: String,
     default: null,
   },
-  color: {
+  url: {
     type: String,
     default: null,
   },
-  type: { 
+  type: {
     type: String, 
-    enum: ["normal","platinum","gold"],
-    required: true,
+    enum: ['normal', 'basic', 'premium', 'featured'],
+    require: true,
+    default: "normal", 
   },
   image: {
+    type: Object,
+    default: null,
+  },
+  video: {
     type: String,
     default: null,
+  },
+  dateStart: {
+    type: Number, 
+    default: parseInt(Date.now()/1000),
+  },
+  dateEnd: {
+    type: Number,
+    default: parseInt(Date.now()/1000),
+  },
+  categories: {
+    type: Array,
+  },
+  size: {
+    type: String, 
+    enum: ["portada_superior","810x100","390x312","1080x840","350x250", "970x250"],
   },
   status: { 
     type: Boolean, 
     default: false,
-  },
+  }
 });
 
-const ad = mongoose.model("ad", adSchema);
+adSchema.plugin(autoIncrement, {id: 'ad', inc_field: 'idShort'});
+
+const ad = mongoose.model('Ad', adSchema);
 module.exports = ad;

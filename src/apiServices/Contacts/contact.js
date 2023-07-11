@@ -1,5 +1,5 @@
-const mogoose = require("mongoose");
-const { Schema } = mogoose;
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 //We define schema for Contact
 const contactSchema = new Schema({
@@ -9,15 +9,15 @@ const contactSchema = new Schema({
   },
   subject: {
     type: String,
-    default: null
+    default: null,
   },
   message: {
     type: String,
-    default: null
+    default: null,
   },
   created: { type: Date, default: Date.now },
   updated: { type: Date, default: Date.now },
 });
 
-const Contact = mogoose.model('Contact', contactSchema);
-module.export = Contact;
+const contact = mongoose.model('Contact', contactSchema);
+module.exports = contact;

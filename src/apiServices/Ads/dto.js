@@ -1,14 +1,21 @@
 const single = (resource) => ({
     name: resource.name,
-    color: resource.color,
+    iShort: resource.iShort,
     type: resource.type,
-    image: resource.image, 
+    image: resource.image,
+    video: resource.video, 
     status: resource.status,
+    dateStart: resource.dateStart,
+    dateEnd: resource.dateEnd,
+    size: resource.size,
+    categories: resource.categories,
+    url: resource.url,
+    id: resource._id,
 });
 
-const multiple = (resources) => resource.map(resource => single(resource));
+const multiple = (resources) => resources.map(resource => single(resource));
 
 module.exports = {
     single,
-    multiple
+    multiple,
 }

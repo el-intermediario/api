@@ -1,7 +1,9 @@
 const single = (resource) => ({
     id: resource._id,
+    idShort: resource.idShort,
     title: resource.title,
     body: resource.body,
+    bodyData: resource.bodyData,
     image: resource.image,
     copete: resource.copete,
     dropline: resource.dropline,
@@ -11,14 +13,29 @@ const single = (resource) => ({
     section: resource.section,
     source: resource.source,
     category: resource.category,
-    categoryKey: resource.categoryKey,
-    categoryParent: resource.categoryParent,
     tags: resource.tags,
+    counter: resource.counter,
+    gallery: resource.gallery
+  });
+
+  const multiple = (resources) => resources.map(resource => single(resource));
+
+  const teaser = (resource) => ({
+    id: resource._id,
+    idShort: resource.idShort,
+    title: resource.title,
+    image: resource.image,
+    copete: resource.copete,
+    dropline: resource.dropline,
+    slug: resource.slug,
+    created: resource.created,
   });
   
-  const multiple = (resources) => resources.map(resource => single(resource));
+  const multipleTeaser = (resources) => resources.map(resource => teaser(resource));
   
   module.exports = {
     single,
-    multiple
+    teaser,
+    multiple,
+    multipleTeaser
   }

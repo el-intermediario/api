@@ -1,8 +1,9 @@
 const single = (resource) => ({
-    name: resource.name,
+    type: resource.type,
+    data: resource.data,
 });
 
-const multiple = (resource) => resource.map((resource) => single(resource));
+const multiple = (resources) => resources.map((resource) => single(resource));
 
 module.exports = {
     single,

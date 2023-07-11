@@ -3,9 +3,7 @@ const router = express.Router();
 const controller = require('./controller');
 const authorize = require('../../utils/authorize');
 
-//Categories api 
-router.get('/', controller.getCategories);
-router.get('/:path', controller.get);
-router.post('/', authorize(['admin', 'editor']), controller.post);
+router.get('/', controller.get);
+router.put('/', controller.put);
 
 module.exports = router;

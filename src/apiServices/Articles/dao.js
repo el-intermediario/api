@@ -8,7 +8,27 @@ module.exports = {
     }));
   },
 
+  async put(id, article) {
+    const filter = { "_id": id };
+    const update = article;
+    return new Promise((resolve, reject) => Article.findOneAndUpdate(filter, update, {
+      new: true
+    }, (err, docs) => {
+      if (err) return reject(err);
+      return resolve(docs);
+    }));
+  },
+
   async get(value, by) {
+    // Increment counter.
+    if (value && by) {
+      const filter = {},
+            update = { $inc: { counter: 1 }};
+      filter[by] = value,
+      await Article.updateOne(filter, update).exec();
+    }
+
+    // Get Data.
     let query = {};
     query[by] = value;
     return new Promise((resolve, reject) => Article.findOne(query, (err, docs) => {
@@ -17,14 +37,85 @@ module.exports = {
     }));
   },
 
-  async getArticles({page, limit, ...filters}) {
-    let filter = {};
-    if (filters.search) { // Search.
-      filter = {"title": { "$regex": filters.search , "$options": "i" }};
+  async getArticles(query) {
+    let filters = {
+      '$and': [],
+      '$or': []
+    };
+
+    let sortObject = {};
+    const stype = 'updated';
+    const sdir = -1;
+    sortObject[stype] = sdir;
+
+    // Filter last articles by category.
+    if (query.category) {
+      filters['$and'].push({"category.initial": { "$regex": query.category , "$options": "i" }});
+      /*
+      const countCategories = query.category.split("/");
+      if (countCategories.length === 2) {
+        filters['$and'].push({"category.initial": { "$regex": query.category , "$options": "i" }})
+      } else {
+        console.log(query.category);
+        filters['$and'].push({"category.initial": query.category });
+      }*/
     }
+
+    if (query.tags) {
+      const tags = query.tags.split(',');
+      filters['$and'].push({ "tags.name": {$in: tags} });
+    }
+
+    // Filter articles if are featured.
+    if(query.trending) {
+      filters['$and'].push({ "featured": true });
+      filters['$and'].push({ _id: {$ne: query.idOffset} });
+    }
+
+    // Filter articles with offset.
+    if(query.offset) {
+      filters['$and'].push({ idShort: {$nin: query.offset.split(',')}}); // not in array.
+    }
+
+    // Get articles more view.
+    if(query.mostView) {
+      filters['$and'].push({});
+      delete sortObject.updated;
+      sortObject.counter = -1;
+    }
+
+    // Search articles by string.
+    if (query.search) {
+      filters['$or'].push({"title": { "$regex": query.search , "$options": "i" }});
+      // tags.
+      filters['$or'].push({ "tags.name": {$eq: query.search} });
+    }
+
+    if (filters['$and'].length === 0) {
+      filters['$and'].push({});
+    }
+
+    if (filters['$or'].length === 0) {
+      filters['$or'].push({});
+    }
+    
+    return new Promise((resolve, reject) => Article.find(filters)
+    .skip(query.page * query.limit).limit(query.limit).sort(sortObject).exec((err, docs) => {
+        if (err) return reject(err);
+        return resolve(docs);
+      }));
+  },
+
+  async ArticlesRelated({page, limit, ...filters}) {
+    let filter = {};
     if (filters.tags) { // related by tags.
       const tags = filters.tags.split(',');
-      filter = { "tags.name": {$in: tags} };
+      filter = {
+        $and: [
+          { "tags.name": {$in: tags} },
+          { _id: {$ne: filters.offsetId} },
+         ]
+      };
     }
     return new Promise((resolve, reject) => Article.find(filter)
     .skip(page * limit).limit(limit).exec((err, docs) => {

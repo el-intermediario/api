@@ -1,10 +1,11 @@
 const express = require('express');
+const authorize = require('../../utils/authorize');
 const router = express.Router();
 const controller = require('./controller');
 
-//Ads api 
 router.get('/', controller.getAds);
-router.get('/:path', controller.get);
+router.get('/:id', controller.get);
+router.put('/:id', authorize(['admin', 'editor']), controller.put);
 router.post('/', controller.post);
 
 module.exports = router;

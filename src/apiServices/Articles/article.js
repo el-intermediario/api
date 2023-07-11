@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const autoIncrement = require('mongoose-sequence')(mongoose);
 const slug = require('mongoose-slug-generator');
 mongoose.plugin(slug);
 
+
 //We define scheme for article
 const articleSchema = new Schema({
+  idShort: Number,
   userId: {
     type: Schema.ObjectId,
     ref: "User",
@@ -17,32 +20,22 @@ const articleSchema = new Schema({
   body: {
     type: String,
     default: null,
-    required: true
+  },
+  bodyData: {
+    type: String,
+    default: ''
   },
   category: {
-    type: Array,
-    default: []
-  },
-  categoryKey: {
-    type: String,
+    type: Object,
     default: null
-  },
-  categoryParent: {
-    type: String,
-    default: null
-  },
-  date: {
-    type: Number,
-    default: Date.now,
   },
   source: {
     type: String,
     default: null,
   },
-  type: {
-    type: String,
-    enum: ['normal', 'featured', 'sponsor'],
-    default: 'normal',
+  featured: {
+    type: Boolean,
+    default: false,
   },
   dropline: {
     type: String,
@@ -57,7 +50,7 @@ const articleSchema = new Schema({
     default: null,
   },
   image: {
-    type: String,
+    type: Object,
     default: null,
   },
   related: {
@@ -80,9 +73,19 @@ const articleSchema = new Schema({
     type: Array,
     default: []
   },
-  created: {type: Date, default: Date.now},
-  updated: {type: Date, default: Date.now},
+  gallery: {
+    type: Array,
+    default: []
+  },
+  counter: {
+    type: Number,
+    default: 0, 
+  },
+  created: {type: Number},
+  updated: {type: Number},
 });
+
+articleSchema.plugin(autoIncrement, {id: 'article', inc_field: 'idShort'});
 
 const model = mongoose.model("Article", articleSchema);
 module.exports = model;

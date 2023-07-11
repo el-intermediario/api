@@ -15,7 +15,7 @@ const s3 = new aws.S3({
 const upload = multer({
   storage: multerS3({
     s3,
-    bucket: 'intermediario-dev',
+    bucket: BUCKET_NAME,
     acl: 'public-read',
     contentType: function (req, file, cb) {
       cb(null, file.mimetype);

@@ -1,29 +1,19 @@
 const dao = require('./dao');
 
 module.exports = {
+  async get(id, by ) {
+    return dao.get(id, by);
+  },
   async post(article) {
     return dao.post(article);
   },
-  async get(id, by) {
-    return dao.get(id, by);
+  async put(id, article) {
+    return dao.put(id, article);
   },
-  async getArticles(filters) {
-    return dao.getArticles(filters);
+  async getArticles(query) {
+    return dao.getArticles(query);
   },
-  /*  
-  async getProfile(id) {
-      return dao.getProfile(id);
-  },
-
-  async updateProfile(id, { email, username }) {
-    return dao.updateProfile(id, { email, username });
-  },
-
-  async deleteProfile(id) {
-    return dao.deleteProfile(id);
-  },
-
-  async getProfileByUserId(userId) {
-    return dao.getProfileByUserId(userId);
-  }*/
+  async ArticlesRelated(filters) {
+    return dao.ArticlesRelated(filters);
+  }
 };
