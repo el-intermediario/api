@@ -115,7 +115,7 @@ cron.schedule(process.env.CRON_TIME_DAILY, async () => {
 async function getFetchResults(direction) {
   let config = {
     method: 'get',
-    url: `https://v3.football.api-sports.io/fixtures?season=2022&league=128&${direction}=8`, // 128 , copaargentina 130  code=AR fixtures/events
+    url: `https://v3.football.api-sports.io/fixtures?season=2023&league=128&${direction}=8`, // 128 , copaargentina 130  code=AR fixtures/events
     headers: {
       'x-rapidapi-key': process.env.SPORTS_API_KEY, // .env
       'x-rapidapi-host': 'v3.football.api-sports.io'
